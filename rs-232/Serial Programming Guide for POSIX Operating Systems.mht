@@ -1,0 +1,3379 @@
+From: <Saved by Windows Internet Explorer 8>
+Subject: Serial Programming Guide for POSIX Operating Systems
+Date: Tue, 3 Jan 2012 11:04:22 +0530
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01CCCA07.72BA8530"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.3664
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01CCCA07.72BA8530
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.easysw.com/~mike/serial/serial.html
+
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" =
+"http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML><HEAD><TITLE>Serial Programming Guide for POSIX Operating =
+Systems</TITLE>
+<META name=3Dauthor content=3D"Michael R. Sweet">
+<META name=3Dcopyright content=3D"Copyright 1994-2005, All Rights =
+Reserved.">
+<META name=3Ddocnumber content=3D"5th Edition, 6th Revision">
+<META content=3D"text/html; charset=3Dutf-8" http-equiv=3DContent-Type>
+<STYLE type=3Dtext/css>BODY {
+	FONT-FAMILY: serif
+}
+H1 {
+	FONT-FAMILY: sans-serif
+}
+H2 {
+	FONT-FAMILY: sans-serif
+}
+H3 {
+	FONT-FAMILY: sans-serif
+}
+H4 {
+	FONT-FAMILY: sans-serif
+}
+H5 {
+	FONT-FAMILY: sans-serif
+}
+H6 {
+	FONT-FAMILY: sans-serif
+}
+SUB {
+	FONT-SIZE: smaller
+}
+SUP {
+	FONT-SIZE: smaller
+}
+PRE {
+	FONT-FAMILY: monospace
+}
+A {
+	TEXT-DECORATION: none
+}
+</STYLE>
+
+<META name=3DGENERATOR content=3D"MSHTML 8.00.6001.18702"></HEAD>
+<BODY aLink=3D#0000ff link=3D#0000ff bgColor=3D#ffffff text=3D#000000 =
+vLink=3D#0000ff>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P align=3Dcenter><IMG =
+src=3D"http://www.easysw.com/~mike/serial/title.gif"=20
+width=3D"100%" height=3D"5%"></P>
+<H1 align=3Dcenter>Serial Programming Guide <BR>for <BR>POSIX Operating=20
+Systems</H1>
+<P align=3Dcenter>5th Edition, 6th Revision <BR>Copyright 1994-2005 by =
+Michael R.=20
+Sweet</P><!-- &lt;P ALIGN=3D&quot;CENTER&quot;&gt;Pig Latin =
+Translation&lt;BR&gt;=0A=
+Copyright 20xy by William E. Coyote&lt;/P&gt; -->
+<P align=3Dcenter>Permission is granted to copy, distribute and/or =
+modify this=20
+document under the terms of the GNU Free Documentation License, Version =
+1.2 or=20
+any later version published by the Free Software Foundation; with no =
+Invariant=20
+Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the =
+license=20
+is included in <A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#license">Appendix =
+C, GNU=20
+Free Documentation License</A>.</P>
+<HR noShade>
+
+<H1 align=3Dcenter><A name=3DCONTENTS>Table of =
+Contents</A></H1><BR><BR><B><A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#1">Introduction</A=
+></B>=20
+<UL>
+  <LI><A=20
+  =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#1_1">License</A></=
+LI>
+  <LI><A=20
+  =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#1_2">Organization<=
+/A></LI></UL><B><A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#basics">Chapter =
+1, Basics=20
+of Serial Communications</A></B>=20
+<UL>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#2_1">What Are=20
+  Serial Communications?</A></LI>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#2_2">What Is=20
+  RS-232?</A>=20
+  <UL>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#2_2_1">Signal=20
+    Definitions</A></LI></UL></LI>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#2_3">Asynchronous =
+
+  Communications</A>=20
+  <UL>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#2_3_1">What Are=20
+    Full Duplex and Half Duplex?</A></LI>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#2_3_2">Flow=20
+    Control</A></LI>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#2_3_3">What Is a=20
+    Break?</A></LI></UL></LI>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#2_4">Synchronous=20
+  Communications</A></LI>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#2_5">Accessing=20
+  Serial Ports</A>=20
+  <UL>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#2_5_1">Serial=20
+    Port Files</A></LI>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#2_5_2">Opening a=20
+    Serial Port</A></LI>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#2_5_3">Writing=20
+    Data to the Port</A></LI>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#2_5_4">Reading=20
+    Data from the Port</A></LI>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#2_5_5">Closing a=20
+    Serial Port</A></LI></UL></LI></UL><B><A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#config">Chapter =
+2,=20
+Configuring the Serial Port</A></B>=20
+<UL>
+  <LI><A href=3D"http://www.easysw.com/~mike/serial/serial.html#3_1">The =
+POSIX=20
+  Terminal Interface</A>=20
+  <UL>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#3_1_1">Control=20
+    Options</A></LI>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#3_1_2">Local=20
+    Options</A></LI>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#3_1_3">Input=20
+    Options</A></LI>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#3_1_4">Output=20
+    Options</A></LI>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#3_1_5">Control=20
+    Characters</A></LI></UL></LI></UL><B><A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#modem">Chapter 3, =
+MODEM=20
+Communications</A></B>=20
+<UL>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#4_1">What Is a=20
+  MODEM?</A></LI>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#4_2">Communicating=
+=20
+  With a MODEM</A>=20
+  <UL>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#4_2_1">Standard=20
+    MODEM Commands</A></LI>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#4_2_2">Common=20
+    MODEM Communication Problems</A></LI></UL></LI></UL><B><A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#advanced">Chapter =
+4,=20
+Advanced Serial Programming</A></B>=20
+<UL>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#5_1">Serial Port=20
+  IOCTLs</A>=20
+  <UL>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#5_1_1">Getting=20
+    the Control Signals</A></LI>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#5_1_2">Setting=20
+    the Control Signals</A></LI>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#5_1_3">Getting=20
+    the Number of Bytes Available</A></LI></UL></LI>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#5_2">Selecting=20
+  Input from a Serial Port</A>=20
+  <UL>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#5_2_1">The=20
+    SELECT System Call</A></LI>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#5_2_2">Using the=20
+    SELECT System Call</A></LI>
+    <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#5_2_3">Using=20
+    SELECT with the X Intrinsics Library</A></LI></UL></LI></UL><B><A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#pinouts">Appendix =
+A,=20
+Pinouts</A></B>=20
+<UL>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#6_1">RS-232=20
+  Pinouts</A></LI>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#6_2">RS-422=20
+  Pinouts</A></LI>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#6_3">RS-574 (IBM=20
+  PC/AT) Pinouts</A></LI>
+  <LI><A href=3D"http://www.easysw.com/~mike/serial/serial.html#6_4">SGI =
+
+  Pinouts</A></LI></UL><B><A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#ascii">Appendix =
+B, ASCII=20
+Control Codes</A></B>=20
+<UL>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#7_1">Control=20
+  Codes</A></LI></UL><B><A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#license">Appendix =
+C, GNU=20
+Free Documentation License</A></B>=20
+<UL>
+  <LI><A href=3D"http://www.easysw.com/~mike/serial/serial.html#8_1">How =
+to use=20
+  this License for your documents</A></LI></UL><B><A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#relnotes">Appendix=
+ D,=20
+Change History</A></B>=20
+<UL>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#9_1">Edition 5,=20
+  Revision 6</A></LI>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#9_2">Edition 5,=20
+  Revision 5</A></LI>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#9_3">Edition 5,=20
+  Revision 4</A></LI>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#9_4">Edition 5,=20
+  Revision 3</A></LI></UL>
+<HR noShade>
+
+<DIV align=3Djustify>
+<H1 align=3Dright><A name=3D1>Introduction</A></H1>
+<P>The Serial Programming Guide for POSIX Operating Systems will teach =
+you how=20
+to successfully, efficiently, and portably program the serial ports on =
+your=20
+UNIX=C2=AE workstation or PC. Each chapter provides programming examples =
+that use the=20
+POSIX (Portable Standard for UNIX) terminal control functions and should =
+work=20
+with very few modifications under IRIX=C2=AE, HP-UX, SunOS=C2=AE, =
+Solaris=C2=AE, Digital UNIX=C2=AE,=20
+Linux=C2=AE, and most other UNIX operating systems. The biggest =
+difference between=20
+operating systems that you will find is the filenames used for serial =
+port=20
+device and lock files.</P>
+<H2><A name=3D1_1>License</A></H2>
+<P>Permission is granted to copy, distribute and/or modify this document =
+under=20
+the terms of the GNU Free Documentation License, Version 1.2 or any =
+later=20
+version published by the Free Software Foundation; with no Invariant =
+Sections,=20
+no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is =
+included=20
+in <A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#license">Appendix =
+C,=20
+GNU Free Documentation License</A>.</P>
+<H2><A name=3D1_2>Organization</A></H2>
+<P>This guide is organized into the following chapters and =
+appendices:</P>
+<UL>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#basics">Chapter =
+1,=20
+  Basics of Serial Programming</A></LI>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#config">Chapter =
+2,=20
+  Configuring the Serial Port</A></LI>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#modems">Chapter =
+3,=20
+  Talking to MODEMs</A></LI>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#advanced">Chapter =
+
+  4, Advanced Serial Programming</A></LI>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#pinouts">Appendix =
+
+  A, RS-232 Pinouts</A></LI>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#ascii">Appendix =
+B,=20
+  ASCII Control Codes</A></LI>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#license">Appendix =
+
+  C, GNU Free Documentation License</A></LI>
+  <LI><A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#relnotes">Appendix=
+=20
+  D, Change History</A></LI></UL></DIV>
+<HR noShade>
+
+<DIV align=3Djustify>
+<H1 align=3Dright><A name=3Dbasics>Chapter 1, Basics of Serial=20
+Communications</A></H1>
+<P>This chapter introduces serial communications, RS-232 and other =
+standards=20
+that are used on most computers as well as how to access a serial port =
+from a C=20
+program.</P>
+<H2><A name=3D2_1>What Are Serial Communications?</A></H2>
+<P>Computers transfer information (data) one or more bits at a time. =
+Serial=20
+refers to the transfer of data one bit at a time. Serial communications =
+include=20
+most network devices, keyboards, mice, MODEMs, and terminals.</P>
+<P>When doing serial communications each word (i.e. byte or character) =
+of data=20
+you send or receive is sent one bit at a time. Each bit is either<I> =
+on</I>=20
+or<I> off.</I> The terms you'll hear sometimes are<I> mark</I> for =
+the<I> on</I>=20
+state and<I> space</I> for the<I> off</I> state.</P>
+<P>The speed of the serial data is most often expressed as =
+bits-per-second=20
+("bps") or baudot rate ("baud"). This just represents the number of ones =
+and=20
+zeroes that can be sent in one second. Back at the dawn of the computer =
+age, 300=20
+baud was considered fast, but today computers can handle RS-232 speeds =
+as high=20
+as 430,800 baud! When the baud rate exceeds 1,000, you'll usually see =
+the rate=20
+shown in<I> kilo</I> baud, or kbps (e.g. 9.6k, 19.2k, etc). For rates =
+above=20
+1,000,000 that rate is shown in<I> mega</I>baud, or Mbps (e.g. =
+1.5Mbps).</P>
+<P>When referring to serial devices or ports, they are either labeled =
+as<I> Data=20
+Communications Equipment</I> ("DCE") or<I> Data Terminal Equipment</I> =
+("DTE").=20
+The difference between these is simple - every signal pair, like =
+transmit and=20
+receive, is swapped. When connecting two DTE or two DCE interfaces =
+together, a=20
+serial<I> null-MODEM</I> cable or adapter is used that swaps the signal=20
+pairs.</P>
+<H2><A name=3D2_2>What Is RS-232?</A></H2>
+<P>RS-232 is a standard electrical interface for serial communications =
+defined=20
+by the <A href=3D"http://www.eia.org/">Electronic Industries Association =
+
+("EIA")</A>. RS-232 actually comes in 3 different flavors (A, B, and C) =
+with=20
+each one defining a different voltage range for the<I> on</I> and<I> =
+off</I>=20
+levels. The most commonly used variety is RS-232C, which defines a mark =
+(on) bit=20
+as a voltage between -3V and -12V and a space (off) bit as a voltage =
+between +3V=20
+and +12V. The RS-232C specification says these signals can go about 25 =
+feet (8m)=20
+before they become unusable. You can usually send signals a bit farther =
+than=20
+this as long as the baud is low enough.</P>
+<P>Besides wires for incoming and outgoing data, there are others that =
+provide=20
+timing, status, and handshaking:=20
+<CENTER>
+<TABLE border=3D1 width=3D"80%">
+  <CAPTION align=3Dcenter>Table 1 - RS-232 Pin Assignments</CAPTION>
+  <TBODY>
+  <TR>
+    <TH>Pin</TH>
+    <TH>Description</TH>
+    <TH>Pin</TH>
+    <TH>Description</TH>
+    <TH>Pin</TH>
+    <TH>Description</TH>
+    <TH>Pin</TH>
+    <TH>Description</TH>
+    <TH>Pin</TH>
+    <TH>Description</TH></TR>
+  <TR>
+    <TD>1</TD>
+    <TD>Earth Ground</TD>
+    <TD>6</TD>
+    <TD><B>DSR</B> - Data Set Ready</TD>
+    <TD>11</TD>
+    <TD>Unassigned</TD>
+    <TD>16</TD>
+    <TD>Secondary RXD</TD>
+    <TD>21</TD>
+    <TD>Signal Quality Detect</TD></TR>
+  <TR>
+    <TD>2</TD>
+    <TD><B>TXD</B> - Transmitted Data</TD>
+    <TD>7</TD>
+    <TD><B>GND</B> - Logic Ground</TD>
+    <TD>12</TD>
+    <TD>Secondary DCD</TD>
+    <TD>17</TD>
+    <TD>Receiver Clock</TD>
+    <TD>22</TD>
+    <TD>Ring Detect</TD></TR>
+  <TR>
+    <TD>3</TD>
+    <TD><B>RXD</B> - Received Data</TD>
+    <TD>8</TD>
+    <TD><B>DCD</B> - Data Carrier Detect</TD>
+    <TD>13</TD>
+    <TD>Secondary CTS</TD>
+    <TD>18</TD>
+    <TD>Unassigned</TD>
+    <TD>23</TD>
+    <TD>Data Rate Select</TD></TR>
+  <TR>
+    <TD>4</TD>
+    <TD><B>RTS</B> - Request To Send</TD>
+    <TD>9</TD>
+    <TD>Reserved</TD>
+    <TD>14</TD>
+    <TD>Secondary TXD</TD>
+    <TD>19</TD>
+    <TD>Secondary RTS</TD>
+    <TD>24</TD>
+    <TD>Transmit Clock</TD></TR>
+  <TR>
+    <TD>5</TD>
+    <TD><B>CTS</B> - Clear To Send</TD>
+    <TD>10</TD>
+    <TD>Reserved</TD>
+    <TD>15</TD>
+    <TD>Transmit Clock</TD>
+    <TD>20</TD>
+    <TD><B>DTR</B> - Data Terminal Ready</TD>
+    <TD>25</TD>
+    <TD>Unassigned</TD></TR></TBODY></TABLE></CENTER>
+<P></P>
+<P>Two standards for serial interfaces you may also see are RS-422 and =
+RS-574.=20
+RS-422 uses lower voltages and<I> differential</I> signals to allow =
+cable=20
+lengths up to about 1000ft (300m). RS-574 defines the 9-pin PC serial =
+connector=20
+and voltages.</P>
+<H3><A name=3D2_2_1>Signal Definitions</A></H3>
+<P>The RS-232 standard defines some 18 different signals for serial=20
+communications. Of these, only six are generally available in the UNIX=20
+environment.</P>
+<H4>GND - Logic Ground</H4>
+<P>Technically the logic ground is not a signal, but without it none of =
+the=20
+other signals will operate. Basically, the logic ground acts as a =
+reference=20
+voltage so that the electronics know which voltages are positive or=20
+negative.</P>
+<H4>TXD - Transmitted Data</H4>
+<P>The TXD signal carries data transmitted from your workstation to the =
+computer=20
+or device on the other end (like a MODEM). A mark voltage is interpreted =
+as a=20
+value of 1, while a space voltage is interpreted as a value of 0.</P>
+<H4>RXD - Received Data</H4>
+<P>The RXD signal carries data transmitted from the computer or device =
+on the=20
+other end to your workstation. Like TXD, mark and space voltages are =
+interpreted=20
+as 1 and 0, respectively.</P>
+<H4>DCD - Data Carrier Detect</H4>
+<P>The DCD signal is received from the computer or device on the other =
+end of=20
+your serial cable. A space voltage on this signal line indicates that =
+the=20
+computer or device is currently connected or on line. DCD is not always =
+used or=20
+available.</P>
+<H4>DTR - Data Terminal Ready</H4>
+<P>The DTR signal is generated by your workstation and tells the =
+computer or=20
+device on the other end that you are ready (a space voltage) or =
+not-ready (a=20
+mark voltage). DTR is usually enabled automatically whenever you open =
+the serial=20
+interface on the workstation.</P>
+<H4>CTS - Clear To Send</H4>
+<P>The CTS signal is received from the other end of the serial cable. A =
+space=20
+voltage indicates that it is alright to send more serial data from your=20
+workstation.</P>
+<P>CTS is usually used to regulate the flow of serial data from your =
+workstation=20
+to the other end.</P>
+<H4>RTS - Request To Send</H4>
+<P>The RTS signal is set to the<I> space</I> voltage by your workstation =
+to=20
+indicate that more data is ready to be sent.</P>
+<P>Like CTS, RTS helps to regulate the flow of data between your =
+workstation and=20
+the computer or device on the other end of the serial cable. Most =
+workstations=20
+leave this signal set to the space voltage all the time.</P>
+<H2><A name=3D2_3>Asynchronous Communications</A></H2>
+<P>For the computer to understand the serial data coming into it, it =
+needs some=20
+way to determine where one character ends and the next begins. This =
+guide deals=20
+exclusively with<I> asynchronous</I> serial data.</P>
+<P>In asynchronous mode the serial data line stays in the mark (1) state =
+until a=20
+character is transmitted. A<I> start</I> bit preceeds each character and =
+is=20
+followed immediately by each bit in the character, an optional parity =
+bit, and=20
+one or more<I> stop</I> bits. The start bit is always a space (0) and =
+tells the=20
+computer that new serial data is available. Data can be sent or received =
+at any=20
+time, thus the name asynchronous. <!-- NEED 1in --></P>
+<P align=3Dcenter>Figure 1 - Asynchronous Data Transmission <BR><IMG=20
+src=3D"http://www.easysw.com/~mike/serial/async.gif" width=3D"50%" =
+height=3D"16%"></P>
+<P>The optional parity bit is a simple sum of the data bits indicating =
+whether=20
+or not the data contains an even or odd number of 1 bits. With<I> even=20
+parity</I>, the parity bit is 0 if there is an even number of 1's in the =
+
+character. With<I> odd parity</I>, the parity bit is 0 if there is an =
+odd number=20
+of 1's in the data. You may also hear the terms<I> space parity</I>,<I> =
+mark=20
+parity</I>, and<I> no parity</I>. Space parity means that the parity bit =
+is=20
+always 0, while mark parity means the bit is always 1. No parity means =
+that no=20
+parity bit is present or transmitted.</P>
+<P>The remaining bits are called stop bits. There can be 1, 1.5, or 2 =
+stop bits=20
+between characters and they always have a value of 1. Stop bits =
+traditionally=20
+were used to give the computer time to process the previous character, =
+but now=20
+only serve to synchronize the receiving computer to the incoming =
+characters.</P>
+<P>Asynchronous data formats are usually expressed as "8N1", "7E1", and =
+so=20
+forth. These stand for "8 data bits, no parity, 1 stop bit" and "7 data =
+bits,=20
+even parity, 1 stop bit" respectively.</P>
+<H3><A name=3D2_3_1>What Are Full Duplex and Half Duplex?</A></H3>
+<P><I>Full duplex</I> means that the computer can send and receive data=20
+simultaneously - there are two separate data channels (one coming in, =
+one going=20
+out).</P>
+<P><I>Half duplex</I> means that the computer cannot send or receive =
+data at the=20
+same time. Usually this means there is only a single data channel to =
+talk over.=20
+This does not mean that any of the RS-232 signals are not used. Rather, =
+it=20
+usually means that the communications link uses some standard other than =
+RS-232=20
+that does not support full duplex operation.</P>
+<H3><A name=3D2_3_2>Flow Control</A></H3>
+<P>It is often necessary to regulate the flow of data when transferring =
+data=20
+between two serial interfaces. This can be due to limitations in an =
+intermediate=20
+serial communications link, one of the serial interfaces, or some =
+storage media.=20
+Two methods are commonly used for asynchronous data.</P>
+<P>The first method is often called "software" flow control and uses =
+special=20
+characters to start (XON or DC1, 021 octal) or stop (XOFF or DC3, 023 =
+octal) the=20
+flow of data. These characters are defined in the <A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#ascii">American =
+Standard=20
+Code for Information Interchange ("ASCII")</A>. While these codes are =
+useful=20
+when transferring textual information, they cannot be used when =
+transferring=20
+other types of information without special programming.</P>
+<P>The second method is called "hardware" flow control and uses the =
+RS-232 CTS=20
+and RTS signals instead of special characters. The receiver sets CTS to =
+the=20
+space voltage when it is ready to receive more data and to the mark =
+voltage when=20
+it is not ready. Likewise, the sender sets RTS to the space voltage when =
+it is=20
+ready to send more data. Because hardware flow control uses a separate =
+set of=20
+signals, it is much faster than software flow control which needs to =
+send or=20
+receive multiple bits of information to do the same thing. CTS/RTS flow =
+control=20
+is not supported by all hardware or operating systems.</P>
+<H3><A name=3D2_3_3>What Is a Break?</A></H3>
+<P>Normally a receive or transmit data signal stays at the mark voltage =
+until a=20
+new character is transferred. If the signal is dropped to the space =
+voltage for=20
+a long period of time, usually 1/4 to 1/2 second, then a break condition =
+is said=20
+to exist.</P>
+<P>A break is sometimes used to reset a communications line or change =
+the=20
+operating mode of communications hardware like a MODEM. <A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#modem">Chapter 3, =
+Talking=20
+to MODEMs</A> covers these applications in more depth.</P>
+<H2><A name=3D2_4>Synchronous Communications</A></H2>
+<P>Unlike asynchronous data, synchronous data appears as a constant =
+stream of=20
+bits. To read the data on the line, the computer must provide or receive =
+a=20
+common bit clock so that both the sender and receiver are =
+synchronized.</P>
+<P>Even with this synchronization, the computer must mark the beginning =
+of the=20
+data somehow. The most common way of doing this is to use a data packet =
+protocol=20
+like Serial Data Link Control ("SDLC") or High-Speed Data Link Control=20
+("HDLC").</P>
+<P>Each protocol defines certain bit sequences to represent the =
+beginning and=20
+end of a data packet. Each also defines a bit sequence that is used when =
+there=20
+is no data. These bit sequences allow the computer to see the beginning =
+of a=20
+data packet.</P>
+<P>Because synchronous protocols do not use per-character =
+synchronization bits=20
+they typically provide at least a 25% improvement in performance over=20
+asynchronous communications and are suitable for remote networking and=20
+configurations with more than two serial interfaces.</P>
+<P>Despite the speed advantages of synchronous communications, most =
+RS-232=20
+hardware does not support it due to the extra hardware and software=20
+required.</P>
+<H2><A name=3D2_5>Accessing Serial Ports</A></H2>
+<P>Like all devices, UNIX provides access to serial ports via<I> device=20
+files</I>. To access a serial port you simply open the corresponding =
+device=20
+file.</P>
+<H3><A name=3D2_5_1>Serial Port Files</A></H3>
+<P>Each serial port on a UNIX system has one or more device files (files =
+in the=20
+<TT>/dev</TT> directory) associated with it:=20
+<CENTER>
+<TABLE border=3D1>
+  <CAPTION align=3Dcenter>Table 2 - Serial Port Device Files</CAPTION>
+  <TBODY>
+  <TR>
+    <TH>System</TH>
+    <TH>Port 1</TH>
+    <TH>Port 2</TH></TR>
+  <TR>
+    <TD>IRIX=C2=AE</TD>
+    <TD>/dev/ttyf1</TD>
+    <TD>/dev/ttyf2</TD></TR>
+  <TR>
+    <TD>HP-UX</TD>
+    <TD>/dev/tty1p0</TD>
+    <TD>/dev/tty2p0</TD></TR>
+  <TR>
+    <TD>Solaris=C2=AE/SunOS=C2=AE</TD>
+    <TD>/dev/ttya</TD>
+    <TD>/dev/ttyb</TD></TR>
+  <TR>
+    <TD>Linux=C2=AE</TD>
+    <TD>/dev/ttyS0</TD>
+    <TD>/dev/ttyS1</TD></TR>
+  <TR>
+    <TD>Digital UNIX=C2=AE</TD>
+    <TD>/dev/tty01</TD>
+    <TD>/dev/tty02</TD></TR></TBODY></TABLE></CENTER>
+<P></P>
+<H3><A name=3D2_5_2>Opening a Serial Port</A></H3>
+<P>Since a serial port is a file, the<I> open(2)</I> function is used to =
+access=20
+it. The one hitch with UNIX is that device files are usually not =
+accessable by=20
+normal users. Workarounds include changing the access permissions to the =
+file(s)=20
+in question, running your program as the super-user (root), or making =
+your=20
+program set-userid so that it runs as the owner of the device file (not=20
+recommended for obvious security reasons...)</P>
+<P>For now we'll assume that the file is accessable by all users. The =
+code to=20
+open serial port 1 on a PC running Linux is show in <A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#listing1">Listing =
+
+1</A>.</P>
+<P><A name=3Dlisting1><I>Listing 1 - Opening a serial =
+port.</I></A></P><PRE>    #include &lt;stdio.h&gt;   /* Standard =
+input/output definitions */
+    #include &lt;string.h&gt;  /* String function definitions */
+    #include &lt;unistd.h&gt;  /* UNIX standard function definitions */
+    #include &lt;fcntl.h&gt;   /* File control definitions */
+    #include &lt;errno.h&gt;   /* Error number definitions */
+    #include &lt;termios.h&gt; /* POSIX terminal control definitions */
+
+    /*
+     * 'open_port()' - Open serial port 1.
+     *
+     * Returns the file descriptor on success or -1 on error.
+     */
+
+    int
+    open_port(void)
+    {
+      int fd; /* File descriptor for the port */
+
+
+      fd =3D open("/dev/ttyS0", O_RDWR | O_NOCTTY | O_NDELAY);
+      if (fd =3D=3D -1)
+      {
+       /*
+	* Could not open the port.
+	*/
+
+	perror("open_port: Unable to open /dev/ttyS0 - ");
+      }
+      else
+	fcntl(fd, F_SETFL, 0);
+
+      return (fd);
+    }
+</PRE>
+<P>Other systems would require the corresponding device file name, but =
+otherwise=20
+the code is the same.</P>
+<H4>Open Options</H4>
+<P>You'll notice that when we opened the device file we used two other =
+flags=20
+along with the read+write mode:</P><PRE>    fd =3D open("/dev/ttyS0", =
+O_RDWR | O_NOCTTY | O_NDELAY);
+</PRE>
+<P>The<I> O_NOCTTY</I> flag tells UNIX that this program doesn't want to =
+be the=20
+"controlling terminal" for that port. If you don't specify this then any =
+input=20
+(such as keyboard abort signals and so forth) will affect your process. =
+Programs=20
+like<I> getty(1M/8)</I> use this feature when starting the login =
+process, but=20
+normally a user program does not want this behavior.</P>
+<P>The<I> O_NDELAY</I> flag tells UNIX that this program doesn't care =
+what state=20
+the DCD signal line is in - whether the other end of the port is up and =
+running.=20
+If you do not specify this flag, your process will be put to sleep until =
+the DCD=20
+signal line is the space voltage.</P>
+<H3><A name=3D2_5_3>Writing Data to the Port</A></H3>
+<P>Writing data to the port is easy - just use the<I> write(2)</I> =
+system call=20
+to send data it:</P><PRE>    n =3D write(fd, "ATZ\r", 4);
+    if (n &lt; 0)
+      fputs("write() of 4 bytes failed!\n", stderr);
+</PRE>
+<P>The<I> write</I> function returns the number of bytes sent or -1 if =
+an error=20
+occurred. Usually the only error you'll run into is<I> EIO</I> when a =
+MODEM or=20
+data link drops the Data Carrier Detect (DCD) line. This condition will =
+persist=20
+until you close the port.</P>
+<H3><A name=3D2_5_4>Reading Data from the Port</A></H3>
+<P>Reading data from a port is a little trickier. When you operate the =
+port in=20
+raw data mode, each<I> read(2)</I> system call will return the number of =
+
+characters that are actually available in the serial input buffers. If =
+no=20
+characters are available, the call will block (wait) until characters =
+come in,=20
+an interval timer expires, or an error occurs. The<I> read</I> function =
+can be=20
+made to return immediately by doing the following:</P><PRE>    fcntl(fd, =
+F_SETFL, FNDELAY);
+</PRE>
+<P>The<I> FNDELAY</I> option causes the<I> read</I> function to return 0 =
+if no=20
+characters are available on the port. To restore normal (blocking) =
+behavior,=20
+call<I> fcntl()</I> without the<I> FNDELAY</I> option:</P><PRE>    =
+fcntl(fd, F_SETFL, 0);
+</PRE>
+<P>This is also used after opening a serial port with the O_NDELAY =
+option.</P>
+<H3><A name=3D2_5_5>Closing a Serial Port</A></H3>
+<P>To close the serial port, just use the<I> close</I> system =
+call:</P><PRE>    close(fd);
+</PRE>
+<P>Closing a serial port will also usually set the DTR signal low which =
+causes=20
+most MODEMs to hang up.</P></DIV>
+<HR noShade>
+
+<DIV align=3Djustify>
+<H1 align=3Dright><A name=3Dconfig>Chapter 2, Configuring the Serial =
+Port</A></H1>
+<P>This chapter discusses how to configure a serial port from C using =
+the POSIX=20
+termios interface.</P>
+<H2><A name=3D3_1>The POSIX Terminal Interface</A></H2>
+<P>Most systems support the POSIX terminal (serial) interface for =
+changing=20
+parameters such as baud rate, character size, and so on. The first thing =
+you=20
+need to do is include the file <TT>&lt;termios.h&gt;</TT>; this defines =
+the=20
+terminal control structure as well as the POSIX control functions.</P>
+<P>The two most important POSIX functions are<I> tcgetattr(3)</I> and<I> =
+
+tcsetattr(3)</I>. These get and set terminal attributes, respectively; =
+you=20
+provide a pointer to a<I> termios</I> structure that contains all of the =
+serial=20
+options available:=20
+<CENTER>
+<TABLE border=3D1 width=3D"50%">
+  <CAPTION align=3Dcenter>Table 3 - Termios Structure Members</CAPTION>
+  <TBODY>
+  <TR>
+    <TH>Member</TH>
+    <TH>Description</TH></TR>
+  <TR>
+    <TD>c_cflag</TD>
+    <TD>Control options</TD></TR>
+  <TR>
+    <TD>c_lflag</TD>
+    <TD>Line options</TD></TR>
+  <TR>
+    <TD>c_iflag</TD>
+    <TD>Input options</TD></TR>
+  <TR>
+    <TD>c_oflag</TD>
+    <TD>Output options</TD></TR>
+  <TR>
+    <TD>c_cc</TD>
+    <TD>Control characters</TD></TR>
+  <TR>
+    <TD>c_ispeed</TD>
+    <TD>Input baud (new interface)</TD></TR>
+  <TR>
+    <TD>c_ospeed</TD>
+    <TD>Output baud (new interface)</TD></TR></TBODY></TABLE></CENTER>
+<P></P>
+<H3><A name=3D3_1_1>Control Options</A></H3>The<I> c_cflag</I> member =
+controls the=20
+baud rate, number of data bits, parity, stop bits, and hardware flow =
+control.=20
+There are constants for all of the supported configurations.=20
+<CENTER>
+<TABLE border=3D1 width=3D"50%">
+  <CAPTION align=3Dcenter>Table 4 - Constants for the c_cflag =
+Member</CAPTION>
+  <TBODY>
+  <TR>
+    <TH>Constant</TH>
+    <TH>Description</TH></TR>
+  <TR>
+    <TD>CBAUD</TD>
+    <TD>Bit mask for baud rate</TD></TR>
+  <TR>
+    <TD>B0</TD>
+    <TD>0 baud (drop DTR)</TD></TR>
+  <TR>
+    <TD>B50</TD>
+    <TD>50 baud</TD></TR>
+  <TR>
+    <TD>B75</TD>
+    <TD>75 baud</TD></TR>
+  <TR>
+    <TD>B110</TD>
+    <TD>110 baud</TD></TR>
+  <TR>
+    <TD>B134</TD>
+    <TD>134.5 baud</TD></TR>
+  <TR>
+    <TD>B150</TD>
+    <TD>150 baud</TD></TR>
+  <TR>
+    <TD>B200</TD>
+    <TD>200 baud</TD></TR>
+  <TR>
+    <TD>B300</TD>
+    <TD>300 baud</TD></TR>
+  <TR>
+    <TD>B600</TD>
+    <TD>600 baud</TD></TR>
+  <TR>
+    <TD>B1200</TD>
+    <TD>1200 baud</TD></TR>
+  <TR>
+    <TD>B1800</TD>
+    <TD>1800 baud</TD></TR>
+  <TR>
+    <TD>B2400</TD>
+    <TD>2400 baud</TD></TR>
+  <TR>
+    <TD>B4800</TD>
+    <TD>4800 baud</TD></TR>
+  <TR>
+    <TD>B9600</TD>
+    <TD>9600 baud</TD></TR>
+  <TR>
+    <TD>B19200</TD>
+    <TD>19200 baud</TD></TR>
+  <TR>
+    <TD>B38400</TD>
+    <TD>38400 baud</TD></TR>
+  <TR>
+    <TD>B57600</TD>
+    <TD>57,600 baud</TD></TR>
+  <TR>
+    <TD>B76800</TD>
+    <TD>76,800 baud</TD></TR>
+  <TR>
+    <TD>B115200</TD>
+    <TD>115,200 baud</TD></TR>
+  <TR>
+    <TD>EXTA</TD>
+    <TD>External rate clock</TD></TR>
+  <TR>
+    <TD>EXTB</TD>
+    <TD>External rate clock</TD></TR>
+  <TR>
+    <TD>CSIZE</TD>
+    <TD>Bit mask for data bits</TD></TR>
+  <TR>
+    <TD>CS5</TD>
+    <TD>5 data bits</TD></TR>
+  <TR>
+    <TD>CS6</TD>
+    <TD>6 data bits</TD></TR>
+  <TR>
+    <TD>CS7</TD>
+    <TD>7 data bits</TD></TR>
+  <TR>
+    <TD>CS8</TD>
+    <TD>8 data bits</TD></TR>
+  <TR>
+    <TD>CSTOPB</TD>
+    <TD>2 stop bits (1 otherwise)</TD></TR>
+  <TR>
+    <TD>CREAD</TD>
+    <TD>Enable receiver</TD></TR>
+  <TR>
+    <TD>PARENB</TD>
+    <TD>Enable parity bit</TD></TR>
+  <TR>
+    <TD>PARODD</TD>
+    <TD>Use odd parity instead of even</TD></TR>
+  <TR>
+    <TD>HUPCL</TD>
+    <TD>Hangup (drop DTR) on last close</TD></TR>
+  <TR>
+    <TD>CLOCAL</TD>
+    <TD>Local line - do not change "owner" of port</TD></TR>
+  <TR>
+    <TD>LOBLK</TD>
+    <TD>Block job control output</TD></TR>
+  <TR>
+    <TD>CNEW_RTSCTS <BR>CRTSCTS</TD>
+    <TD>Enable hardware flow control (not supported on all=20
+  platforms)</TD></TR></TBODY></TABLE></CENTER>
+<P>The<I> c_cflag</I> member contains two options that should always be=20
+enabled,<I> CLOCAL</I> and<I> CREAD</I>. These will ensure that your =
+program=20
+does not become the 'owner' of the port subject to sporatic job control =
+and=20
+hangup signals, and also that the serial interface driver will read =
+incoming=20
+data bytes.</P>
+<P>The baud rate constants (<I>CBAUD</I>,<I> B9600</I>, etc.) are used =
+for older=20
+interfaces that lack the<I> c_ispeed</I> and<I> c_ospeed</I> members. =
+See the=20
+next section for information on the POSIX functions used to set the baud =
+
+rate.</P>
+<P><B>Never</B> initialize the<I> c_cflag</I> (or any other flag) member =
+
+directly; you should always use the bitwise AND, OR, and NOT operators =
+to set or=20
+clear bits in the members. Different operating system versions (and even =
+
+patches) can and do use the bits differently, so using the bitwise =
+operators=20
+will prevent you from clobbering a bit flag that is needed in a newer =
+serial=20
+driver.</P>
+<H4>Setting the Baud Rate</H4>
+<P>The baud rate is stored in different places depending on the =
+operating=20
+system. Older interfaces store the baud rate in the<I> c_cflag</I> =
+member using=20
+one of the baud rate constants in table 4, while newer implementations =
+provide=20
+the<I> c_ispeed</I> and<I> c_ospeed</I> members that contain the actual =
+baud=20
+rate value.</P>
+<P>The<I> cfsetospeed(3)</I> and<I> cfsetispeed(3)</I> functions are =
+provided to=20
+set the baud rate in the<I> termios</I> structure regardless of the =
+underlying=20
+operating system interface. Typically you'd use the code in <A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#listing2">Listing =
+2</A> to=20
+set the baud rate.</P>
+<P><A name=3Dlisting2><I>Listing 2 - Setting the baud =
+rate.</I></A></P><PRE>    struct termios options;
+
+    /*
+     * Get the current options for the port...
+     */
+
+    tcgetattr(fd, &amp;options);
+
+    /*
+     * Set the baud rates to 19200...
+     */
+
+    cfsetispeed(&amp;options, B19200);
+    cfsetospeed(&amp;options, B19200);
+
+    /*
+     * Enable the receiver and set local mode...
+     */
+
+    options.c_cflag |=3D (CLOCAL | CREAD);
+
+    /*
+     * Set the new options for the port...
+     */
+
+    tcsetattr(fd, TCSANOW, &amp;options);
+</PRE>
+<P>The<I> tcgetattr(3)</I> function fills the termios structure you =
+provide with=20
+the current serial port configuration. After we set the baud rates and =
+enable=20
+local mode and serial data receipt, we select the new configuration =
+using<I>=20
+tcsetattr(3)</I>. The<I> TCSANOW</I> constant specifies that all changes =
+should=20
+occur immediately without waiting for output data to finish sending or =
+input=20
+data to finish receiving. There are other constants to wait for input =
+and output=20
+to finish or to flush the input and output buffers.</P>
+<P>Most systems do not support different input and output speeds, so be =
+sure to=20
+set both to the same value for maximum portability. <!-- NEED 2in -->
+<CENTER>
+<TABLE border=3D1 width=3D"50%">
+  <CAPTION align=3Dcenter>Table 5 - Constants for tcsetattr</CAPTION>
+  <TBODY>
+  <TR>
+    <TH>Constant</TH>
+    <TH>Description</TH></TR>
+  <TR>
+    <TD>TCSANOW</TD>
+    <TD>Make changes now without waiting for data to complete</TD></TR>
+  <TR>
+    <TD>TCSADRAIN</TD>
+    <TD>Wait until everything has been transmitted</TD></TR>
+  <TR>
+    <TD>TCSAFLUSH</TD>
+    <TD>Flush input and output buffers and make the=20
+change</TD></TR></TBODY></TABLE></CENTER>
+<P></P>
+<H4>Setting the Character Size</H4>
+<P>Unlike the baud rate, there is no convienience function to set the =
+character=20
+size. Instead you must do a little bitmasking to set things up. The =
+character=20
+size is specified in bits:</P><PRE>    options.c_cflag &amp;=3D ~CSIZE; =
+/* Mask the character size bits */
+    options.c_cflag |=3D CS8;    /* Select 8 data bits */
+</PRE>
+<H4>Setting Parity Checking</H4>
+<P>Like the character size you must manually set the parity enable and =
+parity=20
+type bits. UNIX serial drivers support even, odd, and no parity bit =
+generation.=20
+Space parity can be simulated with clever coding.</P>
+<UL>
+  <LI>No parity (8N1): <PRE>options.c_cflag &amp;=3D ~PARENB
+options.c_cflag &amp;=3D ~CSTOPB
+options.c_cflag &amp;=3D ~CSIZE;
+options.c_cflag |=3D CS8;
+</PRE><BR></LI>
+  <LI>Even parity (7E1): <PRE>options.c_cflag |=3D PARENB
+options.c_cflag &amp;=3D ~PARODD
+options.c_cflag &amp;=3D ~CSTOPB
+options.c_cflag &amp;=3D ~CSIZE;
+options.c_cflag |=3D CS7;
+</PRE><BR></LI>
+  <LI>Odd parity (7O1): <PRE>options.c_cflag |=3D PARENB
+options.c_cflag |=3D PARODD
+options.c_cflag &amp;=3D ~CSTOPB
+options.c_cflag &amp;=3D ~CSIZE;
+options.c_cflag |=3D CS7;
+</PRE><BR></LI>
+  <LI>Space parity is setup the same as no parity (7S1): =
+<PRE>options.c_cflag &amp;=3D ~PARENB
+options.c_cflag &amp;=3D ~CSTOPB
+options.c_cflag &amp;=3D ~CSIZE;
+options.c_cflag |=3D CS8;
+</PRE></LI></UL>
+<H4>Setting Hardware Flow Control</H4>
+<P>Some versions of UNIX support hardware flow control using the CTS =
+(Clear To=20
+Send) and RTS (Request To Send) signal lines. If the<I> CNEW_RTSCTS</I> =
+or<I>=20
+CRTSCTS</I> constants are defined on your system then hardware flow =
+control is=20
+probably supported. Do the following to enable hardware flow =
+control:</P><PRE>    options.c_cflag |=3D CNEW_RTSCTS;    /* Also called =
+CRTSCTS */
+</PRE>
+<P>Similarly, to disable hardware flow control:</P><PRE>    =
+options.c_cflag &amp;=3D ~CNEW_RTSCTS;
+</PRE>
+<H3><A name=3D3_1_2>Local Options</A></H3>
+<P>The local modes member<I> c_lflag</I> controls how input characters =
+are=20
+managed by the serial driver. In general you will configure the<I> =
+c_lflag</I>=20
+member for<I> canonical</I> or<I> raw</I> input.=20
+<CENTER>
+<TABLE border=3D1 width=3D"50%">
+  <CAPTION align=3Dcenter>Table 6 - Constants for the c_lflag =
+Member</CAPTION>
+  <TBODY>
+  <TR>
+    <TH>Constant</TH>
+    <TH>Description</TH></TR>
+  <TR>
+    <TD>ISIG</TD>
+    <TD>Enable SIGINTR, SIGSUSP, SIGDSUSP, and SIGQUIT signals</TD></TR>
+  <TR>
+    <TD>ICANON</TD>
+    <TD>Enable canonical input (else raw)</TD></TR>
+  <TR>
+    <TD>XCASE</TD>
+    <TD>Map uppercase \lowercase (obsolete)</TD></TR>
+  <TR>
+    <TD>ECHO</TD>
+    <TD>Enable echoing of input characters</TD></TR>
+  <TR>
+    <TD>ECHOE</TD>
+    <TD>Echo erase character as BS-SP-BS</TD></TR>
+  <TR>
+    <TD>ECHOK</TD>
+    <TD>Echo NL after kill character</TD></TR>
+  <TR>
+    <TD>ECHONL</TD>
+    <TD>Echo NL</TD></TR>
+  <TR>
+    <TD>NOFLSH</TD>
+    <TD>Disable flushing of input buffers after interrupt or quit=20
+  characters</TD></TR>
+  <TR>
+    <TD>IEXTEN</TD>
+    <TD>Enable extended functions</TD></TR>
+  <TR>
+    <TD>ECHOCTL</TD>
+    <TD>Echo control characters as ^char and delete as ~?</TD></TR>
+  <TR>
+    <TD>ECHOPRT</TD>
+    <TD>Echo erased character as character erased</TD></TR>
+  <TR>
+    <TD>ECHOKE</TD>
+    <TD>BS-SP-BS entire line on line kill</TD></TR>
+  <TR>
+    <TD>FLUSHO</TD>
+    <TD>Output being flushed</TD></TR>
+  <TR>
+    <TD>PENDIN</TD>
+    <TD>Retype pending input at next read or input char</TD></TR>
+  <TR>
+    <TD>TOSTOP</TD>
+    <TD>Send SIGTTOU for background =
+output</TD></TR></TBODY></TABLE></CENTER>
+<P></P>
+<H4>Choosing Canonical Input</H4>
+<P>Canonical input is line-oriented. Input characters are put into a =
+buffer=20
+which can be edited interactively by the user until a CR (carriage =
+return) or LF=20
+(line feed) character is received.</P>
+<P>When selecting this mode you normally select the<I> ICANON</I>,<I> =
+ECHO</I>,=20
+and<I> ECHOE</I> options:</P><PRE>    options.c_lflag |=3D (ICANON | =
+ECHO | ECHOE);
+</PRE>
+<H4>Choosing Raw Input</H4>
+<P>Raw input is unprocessed. Input characters are passed through exactly =
+as they=20
+are received, when they are received. Generally you'll deselect the<I>=20
+ICANON</I>,<I> ECHO</I>,<I> ECHOE</I>, and<I> ISIG</I> options when =
+using raw=20
+input:</P><PRE>    options.c_lflag &amp;=3D ~(ICANON | ECHO | ECHOE | =
+ISIG);
+</PRE>
+<H4>A Note About Input Echo</H4>
+<P><B>Never</B> enable input echo (<I>ECHO, ECHOE</I>) when sending =
+commands to=20
+a MODEM or other computer that is echoing characters, as you will =
+generate a=20
+feedback loop between the two serial interfaces!</P>
+<H3><A name=3D3_1_3>Input Options</A></H3>
+<P>The input modes member<I> c_iflag</I> controls any input processing =
+that is=20
+done to characters received on the port. Like the<I> c_cflag</I> field, =
+the=20
+final value stored in<I> c_iflag</I> is the bitwise OR of the desired =
+options.=20
+<CENTER>
+<TABLE border=3D1 width=3D"50%">
+  <CAPTION align=3Dcenter>Table 7 - Constants for the c_iflag =
+Member</CAPTION>
+  <TBODY>
+  <TR>
+    <TH>Constant</TH>
+    <TH>Description</TH></TR>
+  <TR>
+    <TD>INPCK</TD>
+    <TD>Enable parity check</TD></TR>
+  <TR>
+    <TD>IGNPAR</TD>
+    <TD>Ignore parity errors</TD></TR>
+  <TR>
+    <TD>PARMRK</TD>
+    <TD>Mark parity errors</TD></TR>
+  <TR>
+    <TD>ISTRIP</TD>
+    <TD>Strip parity bits</TD></TR>
+  <TR>
+    <TD>IXON</TD>
+    <TD>Enable software flow control (outgoing)</TD></TR>
+  <TR>
+    <TD>IXOFF</TD>
+    <TD>Enable software flow control (incoming)</TD></TR>
+  <TR>
+    <TD>IXANY</TD>
+    <TD>Allow any character to start flow again</TD></TR>
+  <TR>
+    <TD>IGNBRK</TD>
+    <TD>Ignore break condition</TD></TR>
+  <TR>
+    <TD>BRKINT</TD>
+    <TD>Send a SIGINT when a break condition is detected</TD></TR>
+  <TR>
+    <TD>INLCR</TD>
+    <TD>Map NL to CR</TD></TR>
+  <TR>
+    <TD>IGNCR</TD>
+    <TD>Ignore CR</TD></TR>
+  <TR>
+    <TD>ICRNL</TD>
+    <TD>Map CR to NL</TD></TR>
+  <TR>
+    <TD>IUCLC</TD>
+    <TD>Map uppercase to lowercase</TD></TR>
+  <TR>
+    <TD>IMAXBEL</TD>
+    <TD>Echo BEL on input line too =
+long</TD></TR></TBODY></TABLE></CENTER>
+<P></P>
+<H4>Setting Input Parity Options</H4>
+<P>You should enable input parity checking when you have enabled parity =
+in=20
+the<I> c_cflag</I> member (<I>PARENB</I>). The revelant constants for =
+input=20
+parity checking are<I> INPCK</I>,<I> IGNPAR</I>,<I> PARMRK</I> , and<I>=20
+ISTRIP</I>. Generally you will select<I> INPCK</I> and<I> ISTRIP</I> to =
+enable=20
+checking and stripping of the parity bit:</P><PRE>    options.c_iflag =
+|=3D (INPCK | ISTRIP);
+</PRE>
+<P><I>IGNPAR</I> is a somewhat dangerous option that tells the serial =
+driver to=20
+ignore parity errors and pass the incoming data through as if no errors =
+had=20
+occurred. This can be useful for testing the quality of a communications =
+link,=20
+but in general is not used for practical reasons.</P>
+<P><I>PARMRK</I> causes parity errors to be 'marked' in the input stream =
+using=20
+special characters. If<I> IGNPAR</I> is enabled, a NUL character (000 =
+octal) is=20
+sent to your program before every character with a parity error. =
+Otherwise, a=20
+DEL (177 octal) and NUL character is sent along with the bad =
+character.</P>
+<H4>Setting Software Flow Control</H4>
+<P>Software flow control is enabled using the<I> IXON</I>,<I> IXOFF</I>, =
+and<I>=20
+IXANY</I> constants:</P><PRE>    options.c_iflag |=3D (IXON | IXOFF | =
+IXANY);
+</PRE>
+<P>To disable software flow control simply mask those bits:</P><PRE>    =
+options.c_iflag &amp;=3D ~(IXON | IXOFF | IXANY);
+</PRE>
+<P>The XON (start data) and XOFF (stop data) characters are defined in =
+the<I>=20
+c_cc</I> array described below. <!-- NEED 10in --></P>
+<H3><A name=3D3_1_4>Output Options</A></H3>
+<P>The<I> c_oflag</I> member contains output filtering options. Like the =
+input=20
+modes, you can select processed or raw data output.=20
+<CENTER>
+<TABLE border=3D1 width=3D"50%">
+  <CAPTION align=3Dcenter>Table 8 - Constants for the c_oflag =
+Member</CAPTION>
+  <TBODY>
+  <TR>
+    <TH>Constant</TH>
+    <TH>Description</TH></TR>
+  <TR>
+    <TD>OPOST</TD>
+    <TD>Postprocess output (not set =3D raw output)</TD></TR>
+  <TR>
+    <TD>OLCUC</TD>
+    <TD>Map lowercase to uppercase</TD></TR>
+  <TR>
+    <TD>ONLCR</TD>
+    <TD>Map NL to CR-NL</TD></TR>
+  <TR>
+    <TD>OCRNL</TD>
+    <TD>Map CR to NL</TD></TR>
+  <TR>
+    <TD>NOCR</TD>
+    <TD>No CR output at column 0</TD></TR>
+  <TR>
+    <TD>ONLRET</TD>
+    <TD>NL performs CR function</TD></TR>
+  <TR>
+    <TD>OFILL</TD>
+    <TD>Use fill characters for delay</TD></TR>
+  <TR>
+    <TD>OFDEL</TD>
+    <TD>Fill character is DEL</TD></TR>
+  <TR>
+    <TD>NLDLY</TD>
+    <TD>Mask for delay time needed between lines</TD></TR>
+  <TR>
+    <TD>NL0</TD>
+    <TD>No delay for NLs</TD></TR>
+  <TR>
+    <TD>NL1</TD>
+    <TD>Delay further output after newline for 100 =
+milliseconds</TD></TR>
+  <TR>
+    <TD>CRDLY</TD>
+    <TD>Mask for delay time needed to return carriage to left =
+column</TD></TR>
+  <TR>
+    <TD>CR0</TD>
+    <TD>No delay for CRs</TD></TR>
+  <TR>
+    <TD>CR1</TD>
+    <TD>Delay after CRs depending on current column position</TD></TR>
+  <TR>
+    <TD>CR2</TD>
+    <TD>Delay 100 milliseconds after sending CRs</TD></TR>
+  <TR>
+    <TD>CR3</TD>
+    <TD>Delay 150 milliseconds after sending CRs</TD></TR>
+  <TR>
+    <TD>TABDLY</TD>
+    <TD>Mask for delay time needed after TABs</TD></TR>
+  <TR>
+    <TD>TAB0</TD>
+    <TD>No delay for TABs</TD></TR>
+  <TR>
+    <TD>TAB1</TD>
+    <TD>Delay after TABs depending on current column position</TD></TR>
+  <TR>
+    <TD>TAB2</TD>
+    <TD>Delay 100 milliseconds after sending TABs</TD></TR>
+  <TR>
+    <TD>TAB3</TD>
+    <TD>Expand TAB characters to spaces</TD></TR>
+  <TR>
+    <TD>BSDLY</TD>
+    <TD>Mask for delay time needed after BSs</TD></TR>
+  <TR>
+    <TD>BS0</TD>
+    <TD>No delay for BSs</TD></TR>
+  <TR>
+    <TD>BS1</TD>
+    <TD>Delay 50 milliseconds after sending BSs</TD></TR>
+  <TR>
+    <TD>VTDLY</TD>
+    <TD>Mask for delay time needed after VTs</TD></TR>
+  <TR>
+    <TD>VT0</TD>
+    <TD>No delay for VTs</TD></TR>
+  <TR>
+    <TD>VT1</TD>
+    <TD>Delay 2 seconds after sending VTs</TD></TR>
+  <TR>
+    <TD>FFDLY</TD>
+    <TD>Mask for delay time needed after FFs</TD></TR>
+  <TR>
+    <TD>FF0</TD>
+    <TD>No delay for FFs</TD></TR>
+  <TR>
+    <TD>FF1</TD>
+    <TD>Delay 2 seconds after sending =
+FFs</TD></TR></TBODY></TABLE></CENTER><!-- NEED 2in -->
+<P></P>
+<H4>Choosing Processed Output</H4>
+<P>Processed output is selected by setting the<I> OPOST</I> option in =
+the<I>=20
+c_oflag</I> member:</P><PRE>    options.c_oflag |=3D OPOST;
+</PRE>
+<P>Of all the different options, you will only probably use the<I> =
+ONLCR</I>=20
+option which maps newlines into CR-LF pairs. The rest of the output =
+options are=20
+primarily historic and date back to the time when line printers and =
+terminals=20
+could not keep up with the serial data stream!</P>
+<H4>Choosing Raw Output</H4>
+<P>Raw output is selected by resetting the<I> OPOST</I> option in the<I> =
+
+c_oflag</I> member:</P><PRE>    options.c_oflag &amp;=3D ~OPOST;
+</PRE>
+<P>When the<I> OPOST</I> option is disabled, all other option bits in<I> =
+
+c_oflag</I> are ignored.</P>
+<H3><A name=3D3_1_5>Control Characters</A></H3>
+<P>The<I> c_cc</I> character array contains control character =
+definitions as=20
+well as timeout parameters. Constants are defined for every element of =
+this=20
+array.=20
+<CENTER>
+<TABLE border=3D1>
+  <CAPTION align=3Dcenter>Table 9 - Control Characters in the c_cc=20
+Member</CAPTION>
+  <TBODY>
+  <TR>
+    <TH>Constant</TH>
+    <TH>Description</TH>
+    <TH>Key</TH></TR>
+  <TR>
+    <TD>VINTR</TD>
+    <TD>Interrupt</TD>
+    <TD>CTRL-C</TD></TR>
+  <TR>
+    <TD>VQUIT</TD>
+    <TD>Quit</TD>
+    <TD>CTRL-Z</TD></TR>
+  <TR>
+    <TD>VERASE</TD>
+    <TD>Erase</TD>
+    <TD>Backspace (BS)</TD></TR>
+  <TR>
+    <TD>VKILL</TD>
+    <TD>Kill-line</TD>
+    <TD>CTRL-U</TD></TR>
+  <TR>
+    <TD>VEOF</TD>
+    <TD>End-of-file</TD>
+    <TD>CTRL-D</TD></TR>
+  <TR>
+    <TD>VEOL</TD>
+    <TD>End-of-line</TD>
+    <TD>Carriage return (CR)</TD></TR>
+  <TR>
+    <TD>VEOL2</TD>
+    <TD>Second end-of-line</TD>
+    <TD>Line feed (LF)</TD></TR>
+  <TR>
+    <TD>VMIN</TD>
+    <TD>Minimum number of characters to read</TD>
+    <TD>-</TD></TR>
+  <TR>
+    <TD>VSTART</TD>
+    <TD>Start flow</TD>
+    <TD>CTRL-Q (XON)</TD></TR>
+  <TR>
+    <TD>VSTOP</TD>
+    <TD>Stop flow</TD>
+    <TD>CTRL-S (XOFF)</TD></TR>
+  <TR>
+    <TD>VTIME</TD>
+    <TD>Time to wait for data (tenths of seconds)</TD>
+    <TD>-</TD></TR></TBODY></TABLE></CENTER>
+<P></P>
+<H4>Setting Software Flow Control Characters</H4>
+<P>The<I> VSTART</I> and<I> VSTOP</I> elements of the<I> c_cc</I> array =
+contain=20
+the characters used for software flow control. Normally they should be =
+set to=20
+DC1 (021 octal) and DC3 (023 octal) which represent the <A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#ascii">ASCII</A> =
+standard=20
+XON and XOFF characters.</P>
+<H4>Setting Read Timeouts</H4>
+<P>UNIX serial interface drivers provide the ability to specify =
+character and=20
+packet timeouts. Two elements of the<I> c_cc</I> array are used for =
+timeouts:<I>=20
+VMIN</I> and<I> VTIME</I>.<B> Timeouts are ignored in canonical input =
+mode or=20
+when the<I> NDELAY</I> option is set on the file via<I> open</I> or<I>=20
+fcntl</I>.</B></P>
+<P><I>VMIN</I> specifies the minimum number of characters to read. If it =
+is set=20
+to 0, then the<I> VTIME</I> value specifies the time to wait for every =
+character=20
+read. Note that this does not mean that a<I> read</I> call for N bytes =
+will wait=20
+for N characters to come in. Rather, the timeout will apply to the first =
+
+character and the<I> read</I> call will return the number of characters=20
+immediately available (up to the number you request).</P>
+<P>If<I> VMIN</I> is non-zero,<I> VTIME</I> specifies the time to wait =
+for the=20
+first character read. If a character is read within the time given, any =
+read=20
+will block (wait) until all<I> VMIN</I> characters are read. That is, =
+once the=20
+first character is read, the serial interface driver expects to receive =
+an=20
+entire packet of characters (<I>VMIN</I> bytes total). If no character =
+is read=20
+within the time allowed, then the call to<I> read</I> returns 0. This =
+method=20
+allows you to tell the serial driver you need exactly N bytes and any<I> =
+
+read</I> call will return 0 or N bytes. However, the timeout only =
+applies to the=20
+first character read, so if for some reason the driver misses one =
+character=20
+inside the N byte packet then the<I> read</I> call could block forever =
+waiting=20
+for additional input characters.</P>
+<P><I>VTIME</I> specifies the amount of time to wait for incoming =
+characters in=20
+tenths of seconds. If<I> VTIME</I> is set to 0 (the default), reads will =
+block=20
+(wait) indefinitely unless the<I> NDELAY</I> option is set on the port =
+with<I>=20
+open</I> or<I> fcntl</I>.</P></DIV>
+<HR noShade>
+
+<DIV align=3Djustify>
+<H1 align=3Dright><A name=3Dmodem>Chapter 3, MODEM =
+Communications</A></H1>
+<P>This chapter covers the basics of dialup telephone =
+Modulator/Demodulator=20
+(MODEM) communications. Examples are provided for MODEMs that use the =
+defacto=20
+standard "AT" command set.</P>
+<H2><A name=3D4_1>What Is a MODEM?</A></H2>
+<P>MODEMs are devices that modulate serial data into frequencies that =
+can be=20
+transferred over an analog data link such as a telephone line or cable =
+TV=20
+connection. A standard telephone MODEM converts serial data into tones =
+that can=20
+be passed over the phone lines; because of the speed and complexity of =
+the=20
+conversion these tones sound more like loud screeching if you listen to=20
+them.</P>
+<P>Telephone MODEMs are available today that can transfer data across a=20
+telephone line at nearly 53,000 bits per second, or 53kbps. In addition, =
+most=20
+MODEMs use data compression technology that can increase the bit rate to =
+well=20
+over 100kbps on some types of data.</P>
+<H2><A name=3D4_2>Communicating With a MODEM</A></H2>
+<P>The first step in communicating with a MODEM is to open and configure =
+the=20
+port for<I> raw</I> input as shown in <A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#listing3">Listing =
+3</A> . <!-- NEED 5in --></P>
+<P><A name=3Dlisting3><I>Listing 3 - Configuring the port for raw =
+input.</I>=20
+</A></P><PRE>    int            fd;
+    struct termios options;
+
+    /* open the port */
+    fd =3D open("/dev/ttyS0", O_RDWR | O_NOCTTY | O_NDELAY);
+    fcntl(fd, F_SETFL, 0);
+
+    /* get the current options */
+    tcgetattr(fd, &amp;options);
+
+    /* set raw input, 1 second timeout */
+    options.c_cflag     |=3D (CLOCAL | CREAD);
+    options.c_lflag     &amp;=3D ~(ICANON | ECHO | ECHOE | ISIG);
+    options.c_oflag     &amp;=3D ~OPOST;
+    options.c_cc[VMIN]  =3D 0;
+    options.c_cc[VTIME] =3D 10;
+
+    /* set the options */
+    tcsetattr(fd, TCSANOW, &amp;options);
+</PRE>
+<P>Next you need to establish communications with the MODEM. The best =
+way to do=20
+this is by sending the "AT" command to the MODEM. This also allows smart =
+MODEMs=20
+to detect the baud you are using. When the MODEM is connected correctly =
+and=20
+powered on it will respond with the response "OK".</P>
+<P><A name=3Dlisting4><I>Listing 4 - Initializing the =
+MODEM.</I></A></P><PRE>    int                  /* O - 0 =3D MODEM ok, =
+-1 =3D MODEM bad */
+    init_modem(int fd)   /* I - Serial port file */
+    {
+      char buffer[255];  /* Input buffer */
+      char *bufptr;      /* Current char in buffer */
+      int  nbytes;       /* Number of bytes read */
+      int  tries;        /* Number of tries so far */
+
+      for (tries =3D 0; tries &lt; 3; tries ++)
+      {
+       /* send an AT command followed by a CR */
+	if (write(fd, "AT\r", 3) &lt; 3)
+	  continue;
+
+       /* read characters into our string buffer until we get a CR or NL =
+*/
+	bufptr =3D buffer;
+	while ((nbytes =3D read(fd, bufptr, buffer + sizeof(buffer) - bufptr - =
+1)) &gt; 0)
+	{
+	  bufptr +=3D nbytes;
+	  if (bufptr[-1] =3D=3D '\n' || bufptr[-1] =3D=3D '\r')
+            break;
+	}
+
+       /* nul terminate the string and see if we got an OK response */
+	*bufptr =3D '\0';
+
+	if (strncmp(buffer, "OK", 2) =3D=3D 0)
+	  return (0);
+      }
+
+      return (-1);
+    }
+</PRE>
+<H3><A name=3D4_2_1>Standard MODEM Commands</A></H3>
+<P>Most MODEMs support the "AT" command set, so called because each =
+command=20
+starts with the "AT" characters. Each command is sent with the "AT" =
+characters=20
+starting in the first column followed by the specific command and a =
+carriage=20
+return (CR, 015 octal). After processing the command the MODEM will =
+reply with=20
+one of several textual messages depending on the command.</P>
+<H4>ATD - Dial A Number</H4>
+<P>The<I> ATD</I> command dials the specified number. In addition to =
+numbers and=20
+dashes you can specify tone ("T") or pulse ("P") dialing, pause for one =
+second=20
+(","), and wait for a dialtone ("W"):</P><PRE>    ATDT 555-1212
+    ATDT 18008008008W1234,1,1234
+    ATD T555-1212WP1234
+</PRE>
+<P>The MODEM will reply with one of the following messages:</P><PRE>    =
+NO DIALTONE
+    BUSY
+    NO CARRIER
+    CONNECT
+    CONNECT <I>baud</I>
+</PRE>
+<H4>ATH - Hang Up</H4>
+<P>The<I> ATH</I> command causes the MODEM to hang up. Since the MODEM =
+must be=20
+in "command" mode you probably won't use it during a normal phone =
+call.</P>
+<P>Most MODEMs will also hang up if DTR is dropped; you can do this by =
+setting=20
+the baud to 0 for at least 1 second. Dropping DTR also returns the MODEM =
+to=20
+command mode.</P>
+<P>After a successful hang up the MODEM will reply with "NO CARRIER". If =
+the=20
+MODEM is still connected the "CONNECT" or "CONNECT baud" message will be =
+
+sent.</P>
+<H4>ATZ - Reset MODEM</H4>The<I> ATZ</I> command resets the MODEM. The =
+MODEM=20
+will reply with the string "OK".=20
+<H3><A name=3D4_2_2>Common MODEM Communication Problems</A></H3>
+<P>First and foremost,<I> don't forget to disable input echoing</I>. =
+Input=20
+echoing will cause a feedback loop between the MODEM and computer.</P>
+<P>Second, when sending MODEM commands you must terminate them with a =
+carriage=20
+return (CR) and not a newline (NL). The C character constant for CR is =
+"\r".</P>
+<P>Finally, when dealing with a MODEM make sure you use a baud that the =
+MODEM=20
+supports. While many MODEMs do auto-baud detection, some have limits =
+(19.2kbps=20
+is common on older MODEMs) that you must observe.</P></DIV>
+<HR noShade>
+
+<DIV align=3Djustify>
+<H1 align=3Dright><A name=3Dadvanced>Chapter 4, Advanced Serial =
+Programming</A></H1>
+<P>This chapter covers advanced serial programming techniques using =
+the<I>=20
+ioctl(2)</I> and<I> select(2)</I> system calls.</P>
+<H2><A name=3D5_1>Serial Port IOCTLs</A></H2>
+<P>In <A =
+href=3D"http://www.easysw.com/~mike/serial/serial.html#config">Chapter =
+2,=20
+Configuring the Serial Port</A> we used the<I> tcgetattr</I> and<I>=20
+tcsetattr</I> functions to configure the serial port. Under UNIX these =
+functions=20
+use the<I> ioctl(2)</I> system call to do their magic.</P>
+<P>The<I> ioctl</I> system call takes three arguments:</P><PRE>    int =
+ioctl(int fd, int request, ...);
+</PRE>
+<P>The<I> fd</I> argument specifies the serial port file descriptor. =
+The<I>=20
+request</I> argument is a constant defined in the =
+<CODE>&lt;termios.h&gt;</CODE>=20
+header file and is typically one of the constants listed in <A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#table10">Table =
+10</A>. <!-- NEED 6in -->
+<CENTER><A name=3Dtable10>
+<TABLE border=3D1 width=3D"80%">
+  <CAPTION align=3Dcenter>Table 10 - IOCTL Requests for Serial =
+Ports</CAPTION>
+  <TBODY>
+  <TR>
+    <TH>Request</TH>
+    <TH>Description</TH>
+    <TH noWrap>POSIX Function</TH></TR>
+  <TR>
+    <TD>TCGETS</TD>
+    <TD>Gets the current serial port settings.</TD>
+    <TD noWrap>tcgetattr</TD></TR>
+  <TR>
+    <TD>TCSETS</TD>
+    <TD>Sets the serial port settings immediately.</TD>
+    <TD noWrap>tcsetattr(fd, TCSANOW, &amp;options)</TD></TR>
+  <TR>
+    <TD>TCSETSF</TD>
+    <TD>Sets the serial port settings after flushing the input and =
+output=20
+      buffers.</TD>
+    <TD noWrap>tcsetattr(fd, TCSAFLUSH, &amp;options)</TD></TR>
+  <TR>
+    <TD>TCSETSW</TD>
+    <TD>Sets the serial port settings after allowing the input and =
+output=20
+      buffers to drain/empty.</TD>
+    <TD noWrap>tcsetattr(fd, TCSADRAIN, &amp;options)</TD></TR>
+  <TR>
+    <TD>TCSBRK</TD>
+    <TD>Sends a break for the given time.</TD>
+    <TD noWrap>tcsendbreak, tcdrain</TD></TR>
+  <TR>
+    <TD>TCXONC</TD>
+    <TD>Controls software flow control.</TD>
+    <TD noWrap>tcflow</TD></TR>
+  <TR>
+    <TD>TCFLSH</TD>
+    <TD>Flushes the input and/or output queue.</TD>
+    <TD noWrap>tcflush</TD></TR>
+  <TR>
+    <TD>TIOCMGET</TD>
+    <TD>Returns the state of the "MODEM" bits.</TD>
+    <TD noWrap>None</TD></TR>
+  <TR>
+    <TD>TIOCMSET</TD>
+    <TD>Sets the state of the "MODEM" bits.</TD>
+    <TD noWrap>None</TD></TR>
+  <TR>
+    <TD>FIONREAD</TD>
+    <TD>Returns the number of bytes in the input buffer.</TD>
+    <TD noWrap>None</TD></TR></TBODY></TABLE></A></CENTER>
+<P></P>
+<H3><A name=3D5_1_1>Getting the Control Signals</A></H3>
+<P>The <CODE>TIOCMGET</CODE><I> ioctl</I> gets the current "MODEM" =
+status bits,=20
+which consist of all of the RS-232 signal lines except<B> RXD</B> and<B> =
+
+TXD</B>, listed in <A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#table11">Table =
+11</A>.</P>
+<P>To get the status bits, call<I> ioctl</I> with a pointer to an =
+integer to=20
+hold the bits, as shown in <A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#listing5">Listing =
+5</A>=20
+.</P>
+<P><A name=3Dlisting5><I>Listing 5 - Getting the MODEM status =
+bits.</I></A> </P><PRE>    #include &lt;unistd.h&gt;
+    #include &lt;termios.h&gt;
+
+    int fd;
+    int status;
+
+    ioctl(fd, TIOCMGET, &amp;status);
+</PRE><!-- NEED 4in -->
+<CENTER><A name=3Dtable11>
+<TABLE border=3D1>
+  <CAPTION align=3Dcenter>Table 11 - Control Signal Constants</CAPTION>
+  <TBODY>
+  <TR>
+    <TH>Constant</TH>
+    <TH>Description</TH></TR>
+  <TR>
+    <TD>TIOCM_LE</TD>
+    <TD>DSR (data set ready/line enable)</TD></TR>
+  <TR>
+    <TD>TIOCM_DTR</TD>
+    <TD>DTR (data terminal ready)</TD></TR>
+  <TR>
+    <TD>TIOCM_RTS</TD>
+    <TD>RTS (request to send)</TD></TR>
+  <TR>
+    <TD>TIOCM_ST</TD>
+    <TD>Secondary TXD (transmit)</TD></TR>
+  <TR>
+    <TD>TIOCM_SR</TD>
+    <TD>Secondary RXD (receive)</TD></TR>
+  <TR>
+    <TD>TIOCM_CTS</TD>
+    <TD>CTS (clear to send)</TD></TR>
+  <TR>
+    <TD>TIOCM_CAR</TD>
+    <TD>DCD (data carrier detect)</TD></TR>
+  <TR>
+    <TD>TIOCM_CD</TD>
+    <TD>Synonym for TIOCM_CAR</TD></TR>
+  <TR>
+    <TD>TIOCM_RNG</TD>
+    <TD>RNG (ring)</TD></TR>
+  <TR>
+    <TD>TIOCM_RI</TD>
+    <TD>Synonym for TIOCM_RNG</TD></TR>
+  <TR>
+    <TD>TIOCM_DSR</TD>
+    <TD>DSR (data set ready)</TD></TR></TBODY></TABLE></A></CENTER>
+<H3><A name=3D5_1_2>Setting the Control Signals</A></H3>
+<P>The <CODE>TIOCMSET</CODE><I> ioctl</I> sets the "MODEM" status bits =
+defined=20
+above. To drop the DTR signal you can use the code in <A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#listing6">Listing =
+
+6</A>.</P>
+<P><A name=3Dlisting6><I>Listing 6 - Dropping DTR with the TIOCMSET=20
+ioctl.</I></A></P><PRE>    #include &lt;unistd.h&gt;
+    #include &lt;termios.h&gt;
+
+    int fd;
+    int status;
+
+    ioctl(fd, TIOCMGET, &amp;status);
+
+    status &amp;=3D ~TIOCM_DTR;
+
+    ioctl(fd, TIOCMSET, &amp;status);
+</PRE>
+<P>The bits that can be set depend on the operating system, driver, and =
+modes in=20
+use. Consult your operating system documentation for more =
+information.</P>
+<H3><A name=3D5_1_3>Getting the Number of Bytes Available</A></H3>
+<P>The <CODE>FIONREAD</CODE><I> ioctl</I> gets the number of bytes in =
+the serial=20
+port input buffer. As with <CODE>TIOCMGET</CODE> you pass in a pointer =
+to an=20
+integer to hold the number of bytes, as shown in <A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#listing7">Listing =
+
+7</A>.</P>
+<P><A name=3Dlisting7><I>Listing 7 - Getting the number of bytes in the =
+input=20
+buffer.</I></A></P><PRE>    #include &lt;unistd.h&gt;
+    #include &lt;termios.h&gt;
+
+    int fd;
+    int bytes;
+
+    ioctl(fd, FIONREAD, &amp;bytes);
+</PRE>
+<P>This can be useful when polling a serial port for data, as your =
+program can=20
+determine the number of bytes in the input buffer before attempting a =
+read.</P>
+<H2><A name=3D5_2>Selecting Input from a Serial Port</A></H2>
+<P>While simple applications can poll or wait on data coming from the =
+serial=20
+port, most applications are not simple and need to handle input from =
+multiple=20
+sources.</P>
+<P>UNIX provides this capability through the<I> select(2)</I> system =
+call. This=20
+system call allows your program to check for input, output, or error =
+conditions=20
+on one or more file descriptors. The file descriptors can point to =
+serial ports,=20
+regular files, other devices, pipes, or sockets. You can poll to check =
+for=20
+pending input, wait for input indefinitely, or timeout after a specific =
+amount=20
+of time, making the<I> select</I> system call extremely flexible.</P>
+<P>Most GUI Toolkits provide an interface to<I> select</I>; we will =
+discuss the=20
+X Intrinsics ("Xt") library later in this chapter.</P>
+<H3><A name=3D5_2_1>The SELECT System Call</A></H3>
+<P>The<I> select</I> system call accepts 5 arguments:</P><PRE>    int =
+select(int max_fd, fd_set *input, fd_set *output, fd_set *error,
+               struct timeval *timeout);
+</PRE>
+<P>The<I> max_fd</I> argument specifies the highest numbered file =
+descriptor in=20
+the<I> input</I>,<I> output</I>, and<I> error</I> sets. The<I> =
+input</I>,<I>=20
+output</I>, and<I> error</I> arguments specify sets of file descriptors =
+for=20
+pending input, output, or error conditions; specify <CODE>NULL</CODE> to =
+disable=20
+monitoring for the corresponding condition. These sets are initialized =
+using=20
+three macros:</P><PRE>    FD_ZERO(&amp;fd_set);
+    FD_SET(fd, &amp;fd_set);
+    FD_CLR(fd, &amp;fd_set);
+</PRE>
+<P>The<I> FD_ZERO</I> macro clears the set entirely. The<I> FD_SET</I> =
+and<I>=20
+FD_CLR</I> macros add and remove a file descriptor from the set,=20
+respectively.</P>
+<P>The<I> timeout</I> argument specifies a timeout value which consists =
+of=20
+seconds (<I>timeout.tv_sec</I>) and microseconds (<I>timeout.tv_usec</I> =
+). To=20
+poll one or more file descriptors, set the seconds and microseconds to =
+zero. To=20
+wait indefinitely specify <CODE>NULL</CODE> for the timeout pointer.</P>
+<P>The<I> select</I> system call returns the number of file descriptors =
+that=20
+have a pending condition, or -1 if there was an error.</P>
+<H3><A name=3D5_2_2>Using the SELECT System Call</A></H3>
+<P>Suppose we are reading data from a serial port and a socket. We want =
+to check=20
+for input from either file descriptor, but want to notify the user if no =
+data is=20
+seen within 10 seconds. To do this we'll need to use the<I> select</I> =
+system=20
+call, as shown in <A=20
+href=3D"http://www.easysw.com/~mike/serial/serial.html#listing8">Listing =
+8</A>. <!-- NEED 6in --></P>
+<P><A name=3Dlisting8><I>Listing 8 - Using SELECT to process input from =
+more than=20
+one source.</I></A></P><PRE>    #include &lt;unistd.h&gt;
+    #include &lt;sys/types.h&gt;
+    #include &lt;sys/time.h&gt;
+    #include &lt;sys/select.h&gt;
+
+    int            n;
+    int            socket;
+    int            fd;
+    int            max_fd;
+    fd_set         input;
+    struct timeval timeout;
+
+    /* Initialize the input set */
+    FD_ZERO(&amp;input);
+    FD_SET(fd, &amp;input);
+    FD_SET(sock, &amp;input);
+
+    max_fd =3D (sock &gt; fd ? sock : fd) + 1;
+
+    /* Initialize the timeout structure */
+    timeout.tv_sec  =3D 10;
+    timeout.tv_usec =3D 0;
+
+    /* Do the select */
+    n =3D select(max_fd, &amp;input, NULL, NULL, &amp;timeout);
+
+    /* See if there was an error */
+    if (n &lt; 0)
+      perror("select failed");
+    else if (n =3D=3D 0)
+      puts("TIMEOUT");
+    else
+    {
+      /* We have input */
+      if (FD_ISSET(fd, &amp;input))
+	process_fd();
+      if (FD_ISSET(sock, &amp;input))
+	process_socket();
+    }
+</PRE>
+<P>You'll notice that we first check the return value of the<I> =
+select</I>=20
+system call. Values of 0 and -1 yield the appropriate warning and error=20
+messages. Values greater than 0 mean that we have data pending on one or =
+more=20
+file descriptors.</P>
+<P>To determine which file descriptor(s) have pending input, we use =
+the<I>=20
+FD_ISSET</I> macro to test the input set for each file descriptor. If =
+the file=20
+descriptor flag is set then the condition exists (input pending in this =
+case)=20
+and we need to do something.</P>
+<H3><A name=3D5_2_3>Using SELECT with the X Intrinsics Library</A></H3>
+<P>The X Intrinsics library provides an interface to the<I> select</I> =
+system=20
+call via the<I> XtAppAddInput(3x)</I> and<I> XtAppRemoveInput(3x)</I>=20
+functions:</P><PRE>int XtAppAddInput(XtAppContext context, int fd, int =
+mask,
+                  XtInputProc proc, XtPointer data);
+void XtAppRemoveInput(XtAppContext context, int input);
+</PRE>
+<P>The<I> select</I> system call is used internally to implement =
+timeouts, work=20
+procedures, and check for input from the X server. These functions can =
+be used=20
+with any Xt-based toolkit including Xaw, Lesstif, and Motif.</P>
+<P>The<I> proc</I> argument to<I> XtAppAddInput</I> specifies the =
+function to=20
+call when the selected condition (e.g. input available) exists on the =
+file=20
+descriptor. In the previous example you could specify the<I> =
+process_fd</I>=20
+or<I> process_socket</I> functions.</P>
+<P>Because Xt limits your access to the<I> select</I> system call, =
+you'll need=20
+to implement timeouts through another mechanism, probably via<I>=20
+XtAppAddTimeout(3x)</I>.</P></DIV>
+<HR noShade>
+
+<DIV align=3Djustify>
+<H1 align=3Dright><A name=3Dpinouts>Appendix A, Pinouts</A></H1>
+<P>This appendix provides pinout information for many of the common =
+serial ports=20
+you will find. <!-- NEED 7in --></P>
+<H2><A name=3D6_1>RS-232 Pinouts</A></H2>
+<P>RS-232 comes in three flavors (A, B, C) and uses a 25-pin D-Sub=20
+connector:</P>
+<P align=3Dcenter>Figure 2 - RS-232 Connector <BR><IMG=20
+src=3D"http://www.easysw.com/~mike/serial/db25.gif" width=3D353 =
+height=3D83></P>
+<CENTER>
+<TABLE border=3D1>
+  <CAPTION align=3Dcenter>Table 12 - RS-232 Signals</CAPTION>
+  <TBODY>
+  <TR>
+    <TH>Pin</TH>
+    <TH>Description</TH>
+    <TH>Pin</TH>
+    <TH>Description</TH></TR>
+  <TR>
+    <TD>1</TD>
+    <TD>Earth Ground</TD>
+    <TD>14</TD>
+    <TD>Secondary TXD</TD></TR>
+  <TR>
+    <TD>2</TD>
+    <TD><B>TXD</B> - Transmitted Data</TD>
+    <TD>15</TD>
+    <TD>Transmit Clock</TD></TR>
+  <TR>
+    <TD>3</TD>
+    <TD><B>RXD</B> - Received Data</TD>
+    <TD>16</TD>
+    <TD>Secondary RXD</TD></TR>
+  <TR>
+    <TD>4</TD>
+    <TD><B>RTS</B> - Request To Send</TD>
+    <TD>17</TD>
+    <TD>Receiver Clock</TD></TR>
+  <TR>
+    <TD>5</TD>
+    <TD><B>CTS</B> - Clear To Send</TD>
+    <TD>18</TD>
+    <TD>Unassigned</TD></TR>
+  <TR>
+    <TD>6</TD>
+    <TD><B>DSR</B> - Data Set Ready</TD>
+    <TD>19</TD>
+    <TD>Secondary RTS</TD></TR>
+  <TR>
+    <TD>7</TD>
+    <TD><B>GND</B> - Logic Ground</TD>
+    <TD>20</TD>
+    <TD><B>DTR</B> - Data Terminal Ready</TD></TR>
+  <TR>
+    <TD>8</TD>
+    <TD><B>DCD</B> - Data Carrier Detect</TD>
+    <TD>21</TD>
+    <TD>Signal Quality Detect</TD></TR>
+  <TR>
+    <TD>9</TD>
+    <TD>Reserved</TD>
+    <TD>22</TD>
+    <TD>Ring Detect</TD></TR>
+  <TR>
+    <TD>10</TD>
+    <TD>Reserved</TD>
+    <TD>23</TD>
+    <TD>Data Rate Select</TD></TR>
+  <TR>
+    <TD>11</TD>
+    <TD>Unassigned</TD>
+    <TD>24</TD>
+    <TD>Transmit Clock</TD></TR>
+  <TR>
+    <TD>12</TD>
+    <TD>Secondary DCD</TD>
+    <TD>25</TD>
+    <TD>Unassigned</TD></TR>
+  <TR>
+    <TD>13</TD>
+    <TD>Secondary CTS</TD></TR></TBODY></TABLE></CENTER><!-- NEED 7in =
+-->
+<H2><A name=3D6_2>RS-422 Pinouts</A></H2>
+<P>RS-422 also uses a 25-pin D-Sub connector, but with differential =
+signals:</P>
+<P align=3Dcenter>Figure 3 - RS-422 Connector <BR><IMG=20
+src=3D"http://www.easysw.com/~mike/serial/db25.gif" width=3D353 =
+height=3D83></P>
+<CENTER>
+<TABLE border=3D1>
+  <CAPTION align=3Dcenter>Table 13 - RS-422 Signals</CAPTION>
+  <TBODY>
+  <TR>
+    <TH>Pin</TH>
+    <TH>Description</TH>
+    <TH>Pin</TH>
+    <TH>Description</TH></TR>
+  <TR>
+    <TD>1</TD>
+    <TD>Earth Ground</TD>
+    <TD>14</TD>
+    <TD>TXD+</TD></TR>
+  <TR>
+    <TD>2</TD>
+    <TD><B>TXD-</B> - Transmitted Data</TD>
+    <TD>15</TD>
+    <TD>Transmit Clock-</TD></TR>
+  <TR>
+    <TD>3</TD>
+    <TD><B>RXD-</B> - Received Data</TD>
+    <TD>16</TD>
+    <TD>RXD+</TD></TR>
+  <TR>
+    <TD>4</TD>
+    <TD><B>RTS-</B> - Request To Send</TD>
+    <TD>17</TD>
+    <TD>Receiver Clock-</TD></TR>
+  <TR>
+    <TD>5</TD>
+    <TD><B>CTS-</B> - Clear To Send</TD>
+    <TD>18</TD>
+    <TD>Unassigned</TD></TR>
+  <TR>
+    <TD>6</TD>
+    <TD><B>DSR</B> - Data Set Ready</TD>
+    <TD>19</TD>
+    <TD>RTS+</TD></TR>
+  <TR>
+    <TD>7</TD>
+    <TD><B>GND</B> - Logic Ground</TD>
+    <TD>20</TD>
+    <TD><B>DTR-</B> - Data Terminal Ready</TD></TR>
+  <TR>
+    <TD>8</TD>
+    <TD><B>DCD-</B> - Data Carrier Detect</TD>
+    <TD>21</TD>
+    <TD>Signal Quality Detect</TD></TR>
+  <TR>
+    <TD>9</TD>
+    <TD>Reserved</TD>
+    <TD>22</TD>
+    <TD>Unassigned</TD></TR>
+  <TR>
+    <TD>10</TD>
+    <TD>Reserved</TD>
+    <TD>23</TD>
+    <TD><B>DTR+</B></TD></TR>
+  <TR>
+    <TD>11</TD>
+    <TD>Unassigned</TD>
+    <TD>24</TD>
+    <TD>Transmit Clock+</TD></TR>
+  <TR>
+    <TD>12</TD>
+    <TD>DCD+</TD>
+    <TD>25</TD>
+    <TD>Receiver Clock+</TD></TR>
+  <TR>
+    <TD>13</TD>
+    <TD>CTS+</TD></TR></TBODY></TABLE></CENTER><!-- NEED 4in -->
+<H2><A name=3D6_3>RS-574 (IBM PC/AT) Pinouts</A></H2>
+<P>The RS-574 interface is used exclusively by PC manufacturers and uses =
+a 9-pin=20
+male D-Sub connector:</P>
+<P align=3Dcenter>Figure 4 - RS-574 Connector <BR><IMG=20
+src=3D"http://www.easysw.com/~mike/serial/db9.gif" width=3D164 =
+height=3D82></P>
+<CENTER>
+<TABLE border=3D1>
+  <CAPTION align=3Dcenter>Table 14 - RS-574 (IBM PC/AT) =
+Signals</CAPTION>
+  <TBODY>
+  <TR>
+    <TH>Pin</TH>
+    <TH>Description</TH>
+    <TH>Pin</TH>
+    <TH>Description</TH></TR>
+  <TR>
+    <TD>1</TD>
+    <TD><B>DCD</B> - Data Carrier Detect</TD>
+    <TD>6</TD>
+    <TD>Data Set Ready</TD></TR>
+  <TR>
+    <TD>2</TD>
+    <TD><B>RXD</B> - Received Data</TD>
+    <TD>7</TD>
+    <TD><B>RTS</B> - Request To Send</TD></TR>
+  <TR>
+    <TD>3</TD>
+    <TD><B>TXD</B> - Transmitted Data</TD>
+    <TD>8</TD>
+    <TD><B>CTS</B> - Clear To Send</TD></TR>
+  <TR>
+    <TD>4</TD>
+    <TD><B>DTR</B> - Data Terminal Ready</TD>
+    <TD>9</TD>
+    <TD>Ring Detect</TD></TR>
+  <TR>
+    <TD>5</TD>
+    <TD><B>GND</B> - Logic Ground</TD></TR></TBODY></TABLE></CENTER><!-- =
+NEED 8in -->
+<H2><A name=3D6_4>SGI Pinouts</A></H2>
+<P>Older SGI equipment uses a 9-pin female D-Sub connector. Unlike =
+RS-574, the=20
+SGI pinouts nearly match those of RS-232:</P>
+<P align=3Dcenter>Figure 5 - SGI 9-Pin Connector <BR><IMG=20
+src=3D"http://www.easysw.com/~mike/serial/db9.gif" width=3D164 =
+height=3D82></P>
+<CENTER>
+<TABLE border=3D1>
+  <CAPTION align=3Dcenter>Table 15 - SGI 9-Pin DSUB Signals</CAPTION>
+  <TBODY>
+  <TR>
+    <TH>Pin</TH>
+    <TH>Description</TH>
+    <TH>Pin</TH>
+    <TH>Description</TH></TR>
+  <TR>
+    <TD>1</TD>
+    <TD>Earth Ground</TD>
+    <TD>6</TD>
+    <TD><B>DSR</B> - Data Set Ready</TD></TR>
+  <TR>
+    <TD>2</TD>
+    <TD><B>TXD</B> - Transmitted Data</TD>
+    <TD>7</TD>
+    <TD><B>GND</B> - Logic Ground</TD></TR>
+  <TR>
+    <TD>3</TD>
+    <TD><B>RXD</B> - Received Data</TD>
+    <TD>8</TD>
+    <TD><B>DCD</B> - Data Carrier Detect</TD></TR>
+  <TR>
+    <TD>4</TD>
+    <TD><B>RTS</B> - Request To Send</TD>
+    <TD>9</TD>
+    <TD><B>DTR</B> - Data Terminal Ready</TD></TR>
+  <TR>
+    <TD>5</TD>
+    <TD><B>CTS</B> - Clear To Send</TD></TR></TBODY></TABLE></CENTER>
+<P>The SGI Indigo, Indigo2, and Indy workstations use the Apple 8-pin =
+MiniDIN=20
+connector for their serial ports:</P>
+<P align=3Dcenter>Figure 6 - SGI 8-Pin Connector <BR><IMG=20
+src=3D"http://www.easysw.com/~mike/serial/mdin8.gif" width=3D112 =
+height=3D112></P>
+<CENTER>
+<TABLE border=3D1>
+  <CAPTION align=3Dcenter>Table 16 - SGI 8-Pin MiniDIN Signals</CAPTION>
+  <TBODY>
+  <TR>
+    <TH>Pin</TH>
+    <TH>Description</TH>
+    <TH>Pin</TH>
+    <TH>Description</TH></TR>
+  <TR>
+    <TD>1</TD>
+    <TD><B>DTR</B> - Data Terminal Ready</TD>
+    <TD>5</TD>
+    <TD><B>RXD</B> - Received Data</TD></TR>
+  <TR>
+    <TD>2</TD>
+    <TD><B>CTS</B> - Clear To Send</TD>
+    <TD>6</TD>
+    <TD><B>RTS</B> - Request To Send</TD></TR>
+  <TR>
+    <TD>3</TD>
+    <TD><B>TXD</B> - Transmitted Data</TD>
+    <TD>7</TD>
+    <TD><B>DCD</B> - Data Carrier Detect</TD></TR>
+  <TR>
+    <TD>4</TD>
+    <TD><B>GND</B> - Logic Ground</TD>
+    <TD>8</TD>
+    <TD><B>GND</B> - Logic =
+Ground</TD></TR></TBODY></TABLE></CENTER></DIV>
+<HR noShade>
+
+<DIV align=3Djustify>
+<H1 align=3Dright><A name=3Dascii>Appendix B, ASCII Control =
+Codes</A></H1>
+<P>This chapter lists the ASCII control codes and their names.</P>
+<H2><A name=3D7_1>Control Codes</A></H2>The following ASCII characters =
+are used=20
+for control purposes:=20
+<CENTER>
+<TABLE border=3D1>
+  <CAPTION align=3Dcenter>Table 17 - ASCII Control Codes</CAPTION>
+  <TBODY>
+  <TR>
+    <TH>Name</TH>
+    <TH>Binary</TH>
+    <TH>Octal</TH>
+    <TH>Decimal</TH>
+    <TH>Hexadecimal</TH></TR>
+  <TR>
+    <TD>NUL</TD>
+    <TD>00000000</TD>
+    <TD>000</TD>
+    <TD>0</TD>
+    <TD>00</TD></TR>
+  <TR>
+    <TD>SOH</TD>
+    <TD>00000001</TD>
+    <TD>001</TD>
+    <TD>1</TD>
+    <TD>01</TD></TR>
+  <TR>
+    <TD>STX</TD>
+    <TD>00000010</TD>
+    <TD>002</TD>
+    <TD>2</TD>
+    <TD>02</TD></TR>
+  <TR>
+    <TD>ETX</TD>
+    <TD>00000011</TD>
+    <TD>003</TD>
+    <TD>3</TD>
+    <TD>03</TD></TR>
+  <TR>
+    <TD>EOT</TD>
+    <TD>00000100</TD>
+    <TD>004</TD>
+    <TD>4</TD>
+    <TD>04</TD></TR>
+  <TR>
+    <TD>ENQ</TD>
+    <TD>00000101</TD>
+    <TD>005</TD>
+    <TD>5</TD>
+    <TD>05</TD></TR>
+  <TR>
+    <TD>ACK</TD>
+    <TD>00000110</TD>
+    <TD>006</TD>
+    <TD>6</TD>
+    <TD>06</TD></TR>
+  <TR>
+    <TD>BEL</TD>
+    <TD>00000111</TD>
+    <TD>007</TD>
+    <TD>7</TD>
+    <TD>07</TD></TR>
+  <TR>
+    <TD>BS</TD>
+    <TD>00001000</TD>
+    <TD>010</TD>
+    <TD>8</TD>
+    <TD>08</TD></TR>
+  <TR>
+    <TD>HT</TD>
+    <TD>00001001</TD>
+    <TD>011</TD>
+    <TD>9</TD>
+    <TD>09</TD></TR>
+  <TR>
+    <TD>NL</TD>
+    <TD>00001010</TD>
+    <TD>012</TD>
+    <TD>10</TD>
+    <TD>0A</TD></TR>
+  <TR>
+    <TD>VT</TD>
+    <TD>00001011</TD>
+    <TD>013</TD>
+    <TD>11</TD>
+    <TD>0B</TD></TR>
+  <TR>
+    <TD>NP, FF</TD>
+    <TD>00001100</TD>
+    <TD>014</TD>
+    <TD>12</TD>
+    <TD>0C</TD></TR><!-- NEW PAGE -->
+  <TR>
+    <TH>Name</TH>
+    <TH>Binary</TH>
+    <TH>Octal</TH>
+    <TH>Decimal</TH>
+    <TH>Hexadecimal</TH></TR>
+  <TR>
+    <TD>CR</TD>
+    <TD>00001101</TD>
+    <TD>015</TD>
+    <TD>13</TD>
+    <TD>0D</TD></TR>
+  <TR>
+    <TD>SO</TD>
+    <TD>00001110</TD>
+    <TD>016</TD>
+    <TD>14</TD>
+    <TD>0E</TD></TR>
+  <TR>
+    <TD>SI</TD>
+    <TD>00001111</TD>
+    <TD>017</TD>
+    <TD>15</TD>
+    <TD>0F</TD></TR>
+  <TR>
+    <TD>DLE</TD>
+    <TD>00010000</TD>
+    <TD>020</TD>
+    <TD>16</TD>
+    <TD>10</TD></TR>
+  <TR>
+    <TD>XON, DC1</TD>
+    <TD>00010001</TD>
+    <TD>021</TD>
+    <TD>17</TD>
+    <TD>11</TD></TR>
+  <TR>
+    <TD>DC2</TD>
+    <TD>00010010</TD>
+    <TD>022</TD>
+    <TD>18</TD>
+    <TD>12</TD></TR>
+  <TR>
+    <TD>XOFF, DC3</TD>
+    <TD>00010011</TD>
+    <TD>023</TD>
+    <TD>19</TD>
+    <TD>13</TD></TR>
+  <TR>
+    <TD>DC4</TD>
+    <TD>00010100</TD>
+    <TD>024</TD>
+    <TD>20</TD>
+    <TD>14</TD></TR>
+  <TR>
+    <TD>NAK</TD>
+    <TD>00010101</TD>
+    <TD>025</TD>
+    <TD>21</TD>
+    <TD>15</TD></TR>
+  <TR>
+    <TD>SYN</TD>
+    <TD>00010110</TD>
+    <TD>026</TD>
+    <TD>22</TD>
+    <TD>16</TD></TR>
+  <TR>
+    <TD>ETB</TD>
+    <TD>00010111</TD>
+    <TD>027</TD>
+    <TD>23</TD>
+    <TD>17</TD></TR>
+  <TR>
+    <TD>CAN</TD>
+    <TD>00011000</TD>
+    <TD>030</TD>
+    <TD>24</TD>
+    <TD>18</TD></TR>
+  <TR>
+    <TD>EM</TD>
+    <TD>00011001</TD>
+    <TD>031</TD>
+    <TD>25</TD>
+    <TD>19</TD></TR>
+  <TR>
+    <TD>SUB</TD>
+    <TD>00011010</TD>
+    <TD>032</TD>
+    <TD>26</TD>
+    <TD>1A</TD></TR>
+  <TR>
+    <TD>ESC</TD>
+    <TD>00011011</TD>
+    <TD>033</TD>
+    <TD>27</TD>
+    <TD>1B</TD></TR>
+  <TR>
+    <TD>FS</TD>
+    <TD>00011100</TD>
+    <TD>034</TD>
+    <TD>28</TD>
+    <TD>1C</TD></TR>
+  <TR>
+    <TD>GS</TD>
+    <TD>00011101</TD>
+    <TD>035</TD>
+    <TD>29</TD>
+    <TD>1D</TD></TR>
+  <TR>
+    <TD>RS</TD>
+    <TD>00011110</TD>
+    <TD>036</TD>
+    <TD>30</TD>
+    <TD>1E</TD></TR>
+  <TR>
+    <TD>US</TD>
+    <TD>00011111</TD>
+    <TD>037</TD>
+    <TD>31</TD>
+    <TD>1F</TD></TR></TBODY></TABLE></CENTER></DIV>
+<HR noShade>
+
+<DIV align=3Djustify>
+<H1 align=3Dright><A name=3Dlicense>Appendix C, GNU Free Documentation=20
+License</A></H1>
+<P>Version 1.2, November 2002</P>
+<P></P><PRE>Copyright (C) 2000,2001,2002  Free Software Foundation, Inc.
+59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+Everyone is permitted to copy and distribute verbatim copies
+of this license document, but changing it is not allowed.
+</PRE>
+<P><STRONG>0. PREAMBLE</STRONG></P>
+<P>The purpose of this License is to make a manual, textbook, or other=20
+functional and useful document "free" in the sense of freedom: to assure =
+
+everyone the effective freedom to copy and redistribute it, with or =
+without=20
+modifying it, either commercially or noncommercially. Secondarily, this =
+License=20
+preserves for the author and publisher a way to get credit for their =
+work, while=20
+not being considered responsible for modifications made by others.</P>
+<P>This License is a kind of "copyleft", which means that derivative =
+works of=20
+the document must themselves be free in the same sense. It complements =
+the GNU=20
+General Public License, which is a copyleft license designed for free=20
+software.</P>
+<P>We have designed this License in order to use it for manuals for free =
+
+software, because free software needs free documentation: a free program =
+should=20
+come with manuals providing the same freedoms that the software does. =
+But this=20
+License is not limited to software manuals; it can be used for any =
+textual work,=20
+regardless of subject matter or whether it is published as a printed =
+book. We=20
+recommend this License principally for works whose purpose is =
+instruction or=20
+reference.</P>
+<P><STRONG>1. APPLICABILITY AND DEFINITIONS</STRONG></P>
+<P>This License applies to any manual or other work, in any medium, that =
+
+contains a notice placed by the copyright holder saying it can be =
+distributed=20
+under the terms of this License. Such a notice grants a world-wide, =
+royalty-free=20
+license, unlimited in duration, to use that work under the conditions =
+stated=20
+herein. The "Document", below, refers to any such manual or work. Any =
+member of=20
+the public is a licensee, and is addressed as "you". You accept the =
+license if=20
+you copy, modify or distribute the work in a way requiring permission =
+under=20
+copyright law.</P>
+<P>A "Modified Version" of the Document means any work containing the =
+Document=20
+or a portion of it, either copied verbatim, or with modifications and/or =
+
+translated into another language.</P>
+<P>A "Secondary Section" is a named appendix or a front-matter section =
+of the=20
+Document that deals exclusively with the relationship of the publishers =
+or=20
+authors of the Document to the Document's overall subject (or to related =
+
+matters) and contains nothing that could fall directly within that =
+overall=20
+subject. (Thus, if the Document is in part a textbook of mathematics, a=20
+Secondary Section may not explain any mathematics.) The relationship =
+could be a=20
+matter of historical connection with the subject or with related =
+matters, or of=20
+legal, commercial, philosophical, ethical or political position =
+regarding=20
+them.</P>
+<P>The "Invariant Sections" are certain Secondary Sections whose titles =
+are=20
+designated, as being those of Invariant Sections, in the notice that =
+says that=20
+the Document is released under this License. If a section does not fit =
+the above=20
+definition of Secondary then it is not allowed to be designated as =
+Invariant.=20
+The Document may contain zero Invariant Sections. If the Document does =
+not=20
+identify any Invariant Sections then there are none.</P>
+<P>The "Cover Texts" are certain short passages of text that are listed, =
+as=20
+Front-Cover Texts or Back-Cover Texts, in the notice that says that the =
+Document=20
+is released under this License. A Front-Cover Text may be at most 5 =
+words, and a=20
+Back-Cover Text may be at most 25 words.</P>
+<P>A "Transparent" copy of the Document means a machine-readable copy,=20
+represented in a format whose specification is available to the general =
+public,=20
+that is suitable for revising the document straightforwardly with =
+generic text=20
+editors or (for images composed of pixels) generic paint programs or =
+(for=20
+drawings) some widely available drawing editor, and that is suitable for =
+input=20
+to text formatters or for automatic translation to a variety of formats =
+suitable=20
+for input to text formatters. A copy made in an otherwise Transparent =
+file=20
+format whose markup, or absence of markup, has been arranged to thwart =
+or=20
+discourage subsequent modification by readers is not Transparent. An =
+image=20
+format is not Transparent if used for any substantial amount of text. A =
+copy=20
+that is not "Transparent" is called "Opaque".</P>
+<P>Examples of suitable formats for Transparent copies include plain =
+ASCII=20
+without markup, Texinfo input format, LaTeX input format, SGML or XML =
+using a=20
+publicly available DTD, and standard-conforming simple HTML, PostScript =
+or PDF=20
+designed for human modification. Examples of transparent image formats =
+include=20
+PNG, XCF and JPG. Opaque formats include proprietary formats that can be =
+read=20
+and edited only by proprietary word processors, SGML or XML for which =
+the DTD=20
+and/or processing tools are not generally available, and the =
+machine-generated=20
+HTML, PostScript or PDF produced by some word processors for output =
+purposes=20
+only.</P>
+<P>The "Title Page" means, for a printed book, the title page itself, =
+plus such=20
+following pages as are needed to hold, legibly, the material this =
+License=20
+requires to appear in the title page. For works in formats which do not =
+have any=20
+title page as such, "Title Page" means the text near the most prominent=20
+appearance of the work's title, preceding the beginning of the body of =
+the=20
+text.</P>
+<P>A section "Entitled XYZ" means a named subunit of the Document whose =
+title=20
+either is precisely XYZ or contains XYZ in parentheses following text =
+that=20
+translates XYZ in another language. (Here XYZ stands for a specific =
+section name=20
+mentioned below, such as "Acknowledgements", "Dedications", =
+"Endorsements", or=20
+"History".) To "Preserve the Title" of such a section when you modify =
+the=20
+Document means that it remains a section "Entitled XYZ" according to =
+this=20
+definition.</P>
+<P>The Document may include Warranty Disclaimers next to the notice =
+which states=20
+that this License applies to the Document. These Warranty Disclaimers =
+are=20
+considered to be included by reference in this License, but only as =
+regards=20
+disclaiming warranties: any other implication that these Warranty =
+Disclaimers=20
+may have is void and has no effect on the meaning of this License.</P>
+<P><STRONG>2. VERBATIM COPYING</STRONG></P>
+<P>You may copy and distribute the Document in any medium, either =
+commercially=20
+or noncommercially, provided that this License, the copyright notices, =
+and the=20
+license notice saying this License applies to the Document are =
+reproduced in all=20
+copies, and that you add no other conditions whatsoever to those of this =
+
+License. You may not use technical measures to obstruct or control the =
+reading=20
+or further copying of the copies you make or distribute. However, you =
+may accept=20
+compensation in exchange for copies. If you distribute a large enough =
+number of=20
+copies you must also follow the conditions in section 3.</P>
+<P>You may also lend copies, under the same conditions stated above, and =
+you may=20
+publicly display copies.</P>
+<P><STRONG>3. COPYING IN QUANTITY</STRONG></P>
+<P>If you publish printed copies (or copies in media that commonly have =
+printed=20
+covers) of the Document, numbering more than 100, and the Document's =
+license=20
+notice requires Cover Texts, you must enclose the copies in covers that =
+carry,=20
+clearly and legibly, all these Cover Texts: Front-Cover Texts on the =
+front=20
+cover, and Back-Cover Texts on the back cover. Both covers must also =
+clearly and=20
+legibly identify you as the publisher of these copies. The front cover =
+must=20
+present the full title with all words of the title equally prominent and =
+
+visible. You may add other material on the covers in addition. Copying =
+with=20
+changes limited to the covers, as long as they preserve the title of the =
+
+Document and satisfy these conditions, can be treated as verbatim =
+copying in=20
+other respects.</P>
+<P>If the required texts for either cover are too voluminous to fit =
+legibly, you=20
+should put the first ones listed (as many as fit reasonably) on the =
+actual=20
+cover, and continue the rest onto adjacent pages.</P>
+<P>If you publish or distribute Opaque copies of the Document numbering =
+more=20
+than 100, you must either include a machine-readable Transparent copy =
+along with=20
+each Opaque copy, or state in or with each Opaque copy a =
+computer-network=20
+location from which the general network-using public has access to =
+download=20
+using public-standard network protocols a complete Transparent copy of =
+the=20
+Document, free of added material. If you use the latter option, you must =
+take=20
+reasonably prudent steps, when you begin distribution of Opaque copies =
+in=20
+quantity, to ensure that this Transparent copy will remain thus =
+accessible at=20
+the stated location until at least one year after the last time you =
+distribute=20
+an Opaque copy (directly or through your agents or retailers) of that =
+edition to=20
+the public.</P>
+<P>It is requested, but not required, that you contact the authors of =
+the=20
+Document well before redistributing any large number of copies, to give =
+them a=20
+chance to provide you with an updated version of the Document.</P>
+<P><STRONG>4. MODIFICATIONS</STRONG></P>
+<P>You may copy and distribute a Modified Version of the Document under =
+the=20
+conditions of sections 2 and 3 above, provided that you release the =
+Modified=20
+Version under precisely this License, with the Modified Version filling =
+the role=20
+of the Document, thus licensing distribution and modification of the =
+Modified=20
+Version to whoever possesses a copy of it. In addition, you must do =
+these things=20
+in the Modified Version:</P>
+<P></P>
+<UL>
+  <LI><STRONG>A.</STRONG> Use in the Title Page (and on the covers, if =
+any) a=20
+  title distinct from that of the Document, and from those of previous =
+versions=20
+  (which should, if there were any, be listed in the History section of =
+the=20
+  Document). You may use the same title as a previous version if the =
+original=20
+  publisher of that version gives permission.</LI>
+  <LI><STRONG>B.</STRONG> List on the Title Page, as authors, one or =
+more=20
+  persons or entities responsible for authorship of the modifications in =
+the=20
+  Modified Version, together with at least five of the principal authors =
+of the=20
+  Document (all of its principal authors, if it has fewer than five), =
+unless=20
+  they release you from this requirement.</LI>
+  <LI><STRONG>C.</STRONG> State on the Title page the name of the =
+publisher of=20
+  the Modified Version, as the publisher.</LI>
+  <LI><STRONG>D.</STRONG> Preserve all the copyright notices of the=20
+  Document.</LI>
+  <LI><STRONG>E.</STRONG> Add an appropriate copyright notice for your=20
+  modifications adjacent to the other copyright notices.</LI>
+  <LI><STRONG>F.</STRONG> Include, immediately after the copyright =
+notices, a=20
+  license notice giving the public permission to use the Modified =
+Version under=20
+  the terms of this License, in the form shown in the Addendum =
+below.</LI>
+  <LI><STRONG>G.</STRONG> Preserve in that license notice the full lists =
+of=20
+  Invariant Sections and required Cover Texts given in the Document's =
+license=20
+  notice.</LI>
+  <LI><STRONG>H.</STRONG> Include an unaltered copy of this =
+License.</LI>
+  <LI><STRONG>I.</STRONG> Preserve the section Entitled "History", =
+Preserve its=20
+  Title, and add to it an item stating at least the title, year, new =
+authors,=20
+  and publisher of the Modified Version as given on the Title Page. If =
+there is=20
+  no section Entitled "History" in the Document, create one stating the =
+title,=20
+  year, authors, and publisher of the Document as given on its Title =
+Page, then=20
+  add an item describing the Modified Version as stated in the previous=20
+  sentence.</LI>
+  <LI><STRONG>J.</STRONG> Preserve the network location, if any, given =
+in the=20
+  Document for public access to a Transparent copy of the Document, and =
+likewise=20
+  the network locations given in the Document for previous versions it =
+was based=20
+  on. These may be placed in the "History" section. You may omit a =
+network=20
+  location for a work that was published at least four years before the =
+Document=20
+  itself, or if the original publisher of the version it refers to gives =
+
+  permission.</LI>
+  <LI><STRONG>K.</STRONG> For any section Entitled "Acknowledgements" or =
+
+  "Dedications", Preserve the Title of the section, and preserve in the =
+section=20
+  all the substance and tone of each of the contributor acknowledgements =
+and/or=20
+  dedications given therein.</LI>
+  <LI><STRONG>L.</STRONG> Preserve all the Invariant Sections of the =
+Document,=20
+  unaltered in their text and in their titles. Section numbers or the =
+equivalent=20
+  are not considered part of the section titles.</LI>
+  <LI><STRONG>M.</STRONG> Delete any section Entitled "Endorsements". =
+Such a=20
+  section may not be included in the Modified Version.</LI>
+  <LI><STRONG>N.</STRONG> Do not retitle any existing section to be =
+Entitled=20
+  "Endorsements" or to conflict in title with any Invariant =
+Section.</LI>
+  <LI><STRONG>O.</STRONG> Preserve any Warranty Disclaimers.</LI></UL>
+<P>If the Modified Version includes new front-matter sections or =
+appendices that=20
+qualify as Secondary Sections and contain no material copied from the =
+Document,=20
+you may at your option designate some or all of these sections as =
+invariant. To=20
+do this, add their titles to the list of Invariant Sections in the =
+Modified=20
+Version's license notice. These titles must be distinct from any other =
+section=20
+titles.</P>
+<P>You may add a section Entitled "Endorsements", provided it contains =
+nothing=20
+but endorsements of your Modified Version by various parties--for =
+example,=20
+statements of peer review or that the text has been approved by an =
+organization=20
+as the authoritative definition of a standard.</P>
+<P>You may add a passage of up to five words as a Front-Cover Text, and =
+a=20
+passage of up to 25 words as a Back-Cover Text, to the end of the list =
+of Cover=20
+Texts in the Modified Version. Only one passage of Front-Cover Text and =
+one of=20
+Back-Cover Text may be added by (or through arrangements made by) any =
+one=20
+entity. If the Document already includes a cover text for the same =
+cover,=20
+previously added by you or by arrangement made by the same entity you =
+are acting=20
+on behalf of, you may not add another; but you may replace the old one, =
+on=20
+explicit permission from the previous publisher that added the old =
+one.</P>
+<P>The author(s) and publisher(s) of the Document do not by this License =
+give=20
+permission to use their names for publicity for or to assert or imply=20
+endorsement of any Modified Version.</P>
+<P><STRONG>5. COMBINING DOCUMENTS</STRONG></P>
+<P>You may combine the Document with other documents released under this =
+
+License, under the terms defined in section 4 above for modified =
+versions,=20
+provided that you include in the combination all of the Invariant =
+Sections of=20
+all of the original documents, unmodified, and list them all as =
+Invariant=20
+Sections of your combined work in its license notice, and that you =
+preserve all=20
+their Warranty Disclaimers.</P>
+<P>The combined work need only contain one copy of this License, and =
+multiple=20
+identical Invariant Sections may be replaced with a single copy. If =
+there are=20
+multiple Invariant Sections with the same name but different contents, =
+make the=20
+title of each such section unique by adding at the end of it, in =
+parentheses,=20
+the name of the original author or publisher of that section if known, =
+or else a=20
+unique number. Make the same adjustment to the section titles in the =
+list of=20
+Invariant Sections in the license notice of the combined work.</P>
+<P>In the combination, you must combine any sections Entitled "History" =
+in the=20
+various original documents, forming one section Entitled "History"; =
+likewise=20
+combine any sections Entitled "Acknowledgements", and any sections =
+Entitled=20
+"Dedications". You must delete all sections Entitled "Endorsements."</P>
+<P><STRONG>6. COLLECTIONS OF DOCUMENTS</STRONG></P>
+<P>You may make a collection consisting of the Document and other =
+documents=20
+released under this License, and replace the individual copies of this =
+License=20
+in the various documents with a single copy that is included in the =
+collection,=20
+provided that you follow the rules of this License for verbatim copying =
+of each=20
+of the documents in all other respects.</P>
+<P>You may extract a single document from such a collection, and =
+distribute it=20
+individually under this License, provided you insert a copy of this =
+License into=20
+the extracted document, and follow this License in all other respects =
+regarding=20
+verbatim copying of that document.</P>
+<P><STRONG>7. AGGREGATION WITH INDEPENDENT WORKS</STRONG></P>
+<P>A compilation of the Document or its derivatives with other separate =
+and=20
+independent documents or works, in or on a volume of a storage or =
+distribution=20
+medium, is called an "aggregate" if the copyright resulting from the =
+compilation=20
+is not used to limit the legal rights of the compilation's users beyond =
+what the=20
+individual works permit. When the Document is included in an aggregate, =
+this=20
+License does not apply to the other works in the aggregate which are not =
+
+themselves derivative works of the Document.</P>
+<P>If the Cover Text requirement of section 3 is applicable to these =
+copies of=20
+the Document, then if the Document is less than one half of the entire=20
+aggregate, the Document's Cover Texts may be placed on covers that =
+bracket the=20
+Document within the aggregate, or the electronic equivalent of covers if =
+the=20
+Document is in electronic form. Otherwise they must appear on printed =
+covers=20
+that bracket the whole aggregate.</P>
+<P><STRONG>8. TRANSLATION</STRONG></P>
+<P>Translation is considered a kind of modification, so you may =
+distribute=20
+translations of the Document under the terms of section 4. Replacing =
+Invariant=20
+Sections with translations requires special permission from their =
+copyright=20
+holders, but you may include translations of some or all Invariant =
+Sections in=20
+addition to the original versions of these Invariant Sections. You may =
+include a=20
+translation of this License, and all the license notices in the =
+Document, and=20
+any Warranty Disclaimers, provided that you also include the original =
+English=20
+version of this License and the original versions of those notices and=20
+disclaimers. In case of a disagreement between the translation and the =
+original=20
+version of this License or a notice or disclaimer, the original version =
+will=20
+prevail.</P>
+<P>If a section in the Document is Entitled "Acknowledgements", =
+"Dedications",=20
+or "History", the requirement (section 4) to Preserve its Title (section =
+1) will=20
+typically require changing the actual title.</P>
+<P><STRONG>9. TERMINATION</STRONG></P>
+<P>You may not copy, modify, sublicense, or distribute the Document =
+except as=20
+expressly provided for under this License. Any other attempt to copy, =
+modify,=20
+sublicense or distribute the Document is void, and will automatically =
+terminate=20
+your rights under this License. However, parties who have received =
+copies, or=20
+rights, from you under this License will not have their licenses =
+terminated so=20
+long as such parties remain in full compliance.</P>
+<P><STRONG>10. FUTURE REVISIONS OF THIS LICENSE</STRONG></P>
+<P>The Free Software Foundation may publish new, revised versions of the =
+GNU=20
+Free Documentation License from time to time. Such new versions will be =
+similar=20
+in spirit to the present version, but may differ in detail to address =
+new=20
+problems or concerns. See http://www.gnu.org/copyleft/.</P>
+<P>Each version of the License is given a distinguishing version number. =
+If the=20
+Document specifies that a particular numbered version of this License =
+"or any=20
+later version" applies to it, you have the option of following the terms =
+and=20
+conditions either of that specified version or of any later version that =
+has=20
+been published (not as a draft) by the Free Software Foundation. If the =
+Document=20
+does not specify a version number of this License, you may choose any =
+version=20
+ever published (not as a draft) by the Free Software Foundation.</P>
+<H2><A name=3D8_1>How to use this License for your documents</A></H2>
+<P>To use this License in a document you have written, include a copy of =
+the=20
+License in the document and put the following copyright and license =
+notices just=20
+after the title page:</P>
+<P></P><PRE>      Copyright (c)  YEAR  YOUR NAME.
+      Permission is granted to copy, distribute and/or modify this =
+document
+      under the terms of the GNU Free Documentation License, Version 1.2
+      or any later version published by the Free Software Foundation;
+      with no Invariant Sections, no Front-Cover Texts, and no =
+Back-Cover
+	 Texts.  A copy of the license is included in the section entitled "GNU
+      Free Documentation License".
+</PRE>
+<P>If you have Invariant Sections, Front-Cover Texts and Back-Cover =
+Texts,=20
+replace the "with...Texts." line with this:</P>
+<P></P><PRE>    with the Invariant Sections being LIST THEIR TITLES, =
+with the
+    Front-Cover Texts being LIST, and with the Back-Cover Texts being =
+LIST.
+</PRE>
+<P>If you have Invariant Sections without Cover Texts, or some other =
+combination=20
+of the three, merge those two alternatives to suit the situation.</P>
+<P>If your document contains nontrivial examples of program code, we =
+recommend=20
+releasing these examples in parallel under your choice of free software =
+license,=20
+such as the GNU General Public License, to permit their use in free=20
+software.</P></DIV>
+<HR noShade>
+
+<DIV align=3Djustify>
+<H1 align=3Dright><A name=3Drelnotes>Appendix D, Change History</A></H1>
+<P>This appendix lists the changes that have been made in this =
+edition.</P>
+<H2><A name=3D9_1>Edition 5, Revision 6</A></H2>
+<P>The following changes were made for the 6th revision:</P>
+<UL>
+  <LI>The select() example did not correctly use the FD macros.</LI>
+  <LI>The title page and this appendix were not properly =
+updated.</LI></UL>
+<H2><A name=3D9_2>Edition 5, Revision 5</A></H2>
+<P>The following changes were made for the 5th revision:</P>
+<UL>
+  <LI>The select() documentation did not correctly describe the FD =
+macros.</LI>
+  <LI>Appendix C was missing the "how to use" part of the GNU =
+FDL.</LI></UL>
+<H2><A name=3D9_3>Edition 5, Revision 4</A></H2>
+<P>The following changes were made for the 4th revision:</P>
+<UL>
+  <LI>Changed the description of the read() system call semantics in =
+chapter=20
+  1.</LI>
+  <LI>Added descriptions for VSTART and VSTOP to chapter 2.</LI></UL>
+<H2><A name=3D9_4>Edition 5, Revision 3</A></H2>
+<P>The following changes were made for the 3rd revision:</P>
+<UL>
+  <LI>Now use the GNU Free Documentation License for the guide.</LI>
+  <LI>Changed the examples to use the Linux serial port filenames.</LI>
+  <LI>Put the infrastructure in place to allow for easier translations =
+of the=20
+  guide.</LI>
+  <LI>The guide text is now fully =
+justified.</LI></UL></DIV></BODY></HTML>
+
+------=_NextPart_000_0000_01CCCA07.72BA8530
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.easysw.com/~mike/serial/title.gif
+
+R0lGODdhvAIoAOcAAAAAAAEBAQICAgMDAwQEBAUFBQYGBgcHBwgICAkJCQoKCgsLCwwMDA0NDQ4O
+Dg8PDxAQEBERERISEhMTExQUFBUVFRYWFhcXFxgYGBkZGRoaGhsbGxwcHB0dHR4eHh8fHyAgICEh
+ISIiIiMjIyQkJCUlJSYmJicnJygoKCkpKSoqKisrKywsLC0tLS4uLi8vLzAwMDExMTIyMjMzMzQ0
+NDU1NTY2Njc3Nzg4ODk5OTo6Ojs7Ozw8PD09PT4+Pj8/P0BAQEFBQUJCQkNDQ0REREVFRUZGRkdH
+R0hISElJSUpKSktLS0xMTE1NTU5OTk9PT1BQUFFRUVJSUlNTU1RUVFVVVVZWVldXV1hYWFlZWVpa
+WltbW1xcXF1dXV5eXl9fX2BgYGFhYWJiYmNjY2RkZGVlZWZmZmdnZ2hoaGlpaWpqamtra2xsbG1t
+bW5ubm9vb3BwcHFxcXJycnNzc3R0dHV1dXZ2dnd3d3h4eHl5eXp6ent7e3x8fH19fX5+fn9/f4CA
+gIGBgYKCgoODg4SEhIWFhYaGhoeHh4iIiImJiYqKiouLi4yMjI2NjY6Ojo+Pj5CQkJGRkZKSkpOT
+k5SUlJWVlZaWlpeXl5iYmJmZmZqampubm5ycnJ2dnZ6enp+fn6CgoKGhoaKioqOjo6SkpKWlpaam
+pqenp6ioqKmpqaqqqqurq6ysrK2tra6urq+vr7CwsLGxsbKysrOzs7S0tLW1tba2tre3t7i4uLm5
+ubq6uru7u7y8vL29vb6+vr+/v8DAwMHBwcLCwsPDw8TExMXFxcbGxsfHx8jIyMnJycrKysvLy8zM
+zM3Nzc7Ozs/Pz9DQ0NHR0dLS0tPT09TU1NXV1dbW1tfX19jY2NnZ2dra2tvb29zc3N3d3d7e3t/f
+3+Dg4OHh4eLi4uPj4+Tk5OXl5ebm5ufn5+jo6Onp6erq6uvr6+zs7O3t7e7u7u/v7/Dw8PHx8fLy
+8vPz8/T09PX19fb29vf39/j4+Pn5+fr6+vv7+/z8/P39/f7+/v///ywAAAAAvAIoAAAI/gD/CRxI
+sKDBgwgTKlzIsKHDhxAjSpxIsaLFixgzatzIsaPHjyBDihxJsqTJkyhTqlzJsqXLlzBjypxJs6bN
+mzhz6tzJs6fPn0CDCh1KtKjRo0iTKh0JoGnTg06jPhUodWBVqlGtZsUqdWrBq/+6OtUqdiHYs2IB
+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
++MEQjrCEJ0zhiQQEADs=
+
+------=_NextPart_000_0000_01CCCA07.72BA8530
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.easysw.com/~mike/serial/async.gif
+
+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
+Ow==
+
+------=_NextPart_000_0000_01CCCA07.72BA8530
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.easysw.com/~mike/serial/db25.gif
+
+R0lGODlhYQFTAPEAAL+/vwAAAMzMzMzMzCH5BAEAAAIALAAAAABhAVMAQQL+lI+Jwe0Po5y02ouz
+3rz7D4ZippSmEADqyrbuC8fyTNf2jef6zvf+D/SlAMNcYIErBpfMpvMJjUqnNKVKyYAdDVbbxWsB
+V8QUsuQWNkfQYzWEXXY/4JPdFmmMyxtJfa29l0W3NvhWOHfo0FeXyNcoiHaCQkVZaXmJmakJdSfJ
+1USoE5qHKGpoWkqqaHeq6oi6CvvqChnU6ZnQRXtW9dWbNoPx5xtMLCP8C3hsHINcDGyHi6vLUuti
+vZmtvc2tHbvS2nIrfUINfj3arb7O3s5jLv4yTk4/636Pn6+/xEAvDb8voMCBBJ3MA3glYcGFDBuy
+g4cN3Cc0DitavLivE0L+cc6aMdPyUV5IdNA8lgR5UmRKkspMtkT5UmXMYyY2YryJM6elebl0+vwJ
+9AlPSTaXreQ4kyWjZEuf+TH61GVTqFOl8mJ61WlVUf4UFLVqb1g6seHIptoj6xvaXRG1qjX7FmtY
+rl1LIKQ25GvQvXyBYCHS9kpdT3r7Gj7sbqi/wIgbO17Yb9rjyZT1mcPrlWLlzZylAMQ80Uvn0aRt
+VdES+k/p1ax3pmbLWGZZt3GpnpU713ZtsLl5x1Z6m3ZvmLN1Dw924DfSpNVGLo8qeyvwrL6DTx8b
+nTpx6c+5Nz/6nbnIzIugZy9+3Xr63d2xn1cf3nx79/PRx/cOzvl97TT+a7Ji71YP9gX4DnwE/nec
+bQIaqGCBADZoBGGtTUghJYolV2GGGtpSz4YefuhFV4Vtx+B+D5qYIIrK5YdffSteId97LwLWoopf
+iRdJXSO6eGJH1T2YAW70sQgejPoZWSSNSQYp3JB/DPYagvyRWCKSU66XopI1ankljyseSeSWYFrZ
+5ZNQRglimhReSM5dzRChZpwPNVdNiGf2dIw858jJ5zqfoXYnee0p1WehmFzFx1xsnrmjoY4GFFmg
+kk5KaaWWXopppppuymmnyTn5aKgMSaBjo6KeilGk5aDKamc8mdpqrH5iM9stsMqKazef6XKHTVnm
+Cmwll0GE5pvBHrv+jZvyFKsFss5uouw1zOr5bLVTZKXeFjday21GkwgXZqMDQpjWgiduZ+6vwKU7
+Y3fsiltlM1yMmGS449obb71k3rtvvjjiey6X/Arsb4xevoMhbCX6SOW9DMvY45gPY5nixF4qZ7GN
+6gqGxyMMZgzwwhKPXC/I/TpM8r8mEzwwxx0HEnHJKRt8ssgy36zyzDWuvHI1dimc5Zgsnyu0vkO/
+aHTS/9aM9NJH6zVUYVuimNbGLFfd7tWwYS11me9xDXYfq3ZL9kAX3lp22p5JqHbbD/3jdtzcLIq2
+3HZH2Obdelu42N5+R7Hoyz9MDXDY5cVb+NaKHx5w4oxbTThyOvrcpW/RlV++tOWZY04z018aLe9g
+t/Kss9dPY1w6qKdvRDrOnfccuuiDp46y6zvT/rHJTBoH6u4/Ni4to7PbrvrpMH++efKdGw9X8Zov
+HzuUsDp99OONU4899NV7bL262Ue+7J11t+yug1aH+2765meN/vrwAn8fh5LW/bfcgbMt0zL1hwqJ
+Fb5SGi2OwGl/rPqLmeZ3GnQohICi8l9eLlOpP8VjTwx0FOvCB8BgaLCCfarFZTAYQQ7urS33m5wI
+CVhC6dHvhKdSlacWMIIYynCGNKyhDW+IwxxOQFIFAAA7
+
+------=_NextPart_000_0000_01CCCA07.72BA8530
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.easysw.com/~mike/serial/db9.gif
+
+R0lGODlhpABSAPIAAH19fWZmZmBgYB0dHQAAAL+/v8zMzMzMzCH5BAEAAAYALAAAAACkAFIAQgP+
+aLrc8YHISau9OOvNu/8WFDQkGQhFqq4pWhBsLM90bd94rs/wvhKM3k1AJBBdvqRyyfQBBIDoYJAE
+KoS7Tk6L4968Ng5SZw1WNVk0Wb1ld93d0gLbrNvveHxZbsYLLmM5fxaBOIMVhUOAeXt8JXRnHG+S
+X2A0Hk2NjnyQilNUeaGiKn8DBABLmpuOnTwrAKCjsqKtYau3jhFGRLO9vjZHEiO4mxG/x8jJP48+
+tcrPo6gqA9JkV3ZHiTvZddxN3kzgTHvOMh7aP5Y86ubsMZhZcuXQ9PXWm/P2+vsvxNd18MKImaQB
+XboNBuP4a5APGIYkhypAfOgjIgU7qhYaaJj+AoaAAQn5yaKmAgDHZRpzhRTJUomAYSkXRFjZsmao
+PzA54YBls6ehbDT7MTBGxqfRSwWIVCMz7OSLo1Br8Iy3MarVegRGOD24aA2GoC8ygC2Y5msqmU4D
+1lB7yR0LtusoMSWRVq7ADW3wEsyQF44teS6L8FoSbHDgP4YhCgbLojDjjviuSqZ1a+vky2+JWcZ8
+OaPOOwi9mu3bVRFZjClPAHTL1W87u3FhV8y5cHPrC6Ip7sVtSHazmHM4CzcHvE+OqcMBvopFtXjw
+LStIJl8yBcVWzzE5fpI+3ccnI0qwO1fdvedL5w4oiCtfMxsF2qvAs5//J/78+5mZ2YBlCj/+VqDN
+/QOdf9DYJlRVWRBYIEiIVSHggArWg9wWD3YRoT3cUYjgEEA9dqETH4EUngFEfaggEAZaJF9FhLjU
+4kSIuBjjOAqUWBZfpPG2mwW56ViJa0PAdB1rKsD1ml53IbkWkcQZlyOOS/r2DpNhSfkWlSgFMRaV
+Rk5p5W26RamkIvr1+OKPYj05I5qjsemjQmWauaKcj7VJZyRrbgHfcyYmJ56BfepzHiuBCidehYVG
+NWhkiUp2KJ+NHrWofaIAGM56FWG6jaYA1aYHkLG9maSoYpI6okaAVgnqlWO21WqoYZ6VUqpdsvqq
+l7fauiqcqK72ZZFcBvvrX9n5etqosbqFuiuwuWoIHKDN4moqrBLJOUE3e/qTaguIeUhKt9+Ae+ku
+eqC3oRMALJWoug6i59QUkZYUyymnuptgvEW+Ve94QUkAxUfxnvJEf+2ayxEdzEU6obPmkncDchk2
+KuJv5g4FFruBpouxIdmi5zC+vUxasQlzgnwHTiMTIwIILLfs8ssvQ4BeAgA7
+
+------=_NextPart_000_0000_01CCCA07.72BA8530
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.easysw.com/~mike/serial/mdin8.gif
+
+R0lGODlhcABwAPEAADo6OgAAAL+/v////yH5BAEAAAMALAAAAABwAHAAQQL+nI+py20B3Yuy2osX
+FLz7D4biSApUhmrlyrbuGqRM4AFQAHT3ztNsD3QBezoeJ3bxeSC5o3J4e0GjwmkRYNuAkAnl6wsO
+i3+PcXFnJorV6YG3lHVOqaU5nWS/y9+fGN8MGCgowqU1eIg4xqXwN2Jo4pXXuJW3hPPYcpJUF0TZ
+KTUUEoonYzGZiLpYutp1ioqnyipboefo4Fo0q8v42tu3q/KDuYYrXBy7aZnDBFkJ48yZl7XTpHPr
+i51t0qXdjY10OnxmZTyXaVeDgyVeNDJ9U733eT5aBdXHtjXhzZ8YW0wsHygjvTTN+FJL0jFolkAB
+K9PvELKHDQBGtEUx4z7+RDc0ekxSa5uEPx0/mrQoqhA7YSZToLyoryU3mP4+vqS5ZpcrcgPnlRMo
+SoaSOE6aoXt2NBq6lRN54aMmr55SnlND2ag2rKkbEe/4+Oy5EimaEPGCOsWJts7MtGwxbm0Ll9Bb
+QgLN2ZP6EygHLGrDEYx6TyxVR5LownJB1GhgwYurfm1oWFBIhJMHSoYYN/MRBDc1fzvrGW3TmzzK
+Kn5MePDesG6vhWE2zi4shu2koCiWGBPt1KqLZtLYua1Wj8HZDgcemozMW8WzGVx+m7W/49CBK6Re
+HTrB4z54ZNcednj459+FSo8J2lj525Ir214/o7k38tXlw8QO7HxykS3+7cfF79J+bTzkn4D0sedY
+QH+B5d5mq+AiW1568ebTO/wheFoTu9GVlGNqJLYEhle1o5CEqD21FFQhJtNBV4DhxWGEFE6R2xvU
+vTGibxvGCOOMnRiS1UgprfNIY3ctSE9dY6GX3gd8CfgKMgVC+dpaVF6kypRXglHIljh16SVNfoT5
+5VwKIpnkkgw22Ndsau6YUm88StWVaZBF5kmHPp5oyY7juUlHiYz1mKeMzdhZ2zmxGTknoYUyutok
+4xFpo6F7qjkoktWAiM8KWCB6mn4oYpomqQJYaIuWZL6n6qrKteoqKQfAGqtZmNXqyz+4ftZkKv6x
+GchExT0ZJ5/FGptyU0WUqQPbosi+iCSayrlGTJ96NvqYqNaY8ppuhXmY7UsAmslJDsRCa+qxkGo7
+7q3YPirtpXo46uCDkALa3ITy2hRru7PQqo2/sgDsXHkE8/rdwVHCt5GBAhPn2cPgfXkgw6Zoy2XF
+Ftub7owbfwyyAwUAADs=
+
+------=_NextPart_000_0000_01CCCA07.72BA8530--

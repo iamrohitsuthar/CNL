@@ -1,0 +1,28 @@
+install arp-scan :
+    apt-get install arp-scan
+
+    yum install arp-scan
+
+    usage:
+
+        arp-scan --interface ens33 --localnet
+
+
+search for installed program
+
+    rpm -qa | grep <program_name>  
+
+    yum list installed | grep <program_name>
+
+
+Transfer File :
+
+    scp path/to/file user@ip:path/to/destination
+
+sshpass :
+
+    sshpass -p <password> ssh user@ip
+
+Install local package :
+
+    yum localinstall <package_name>
